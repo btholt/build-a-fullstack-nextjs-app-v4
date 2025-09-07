@@ -3,18 +3,30 @@
     "name": "Brian Holt",
     "company": "Databricks"
   },
-  "title": "Next.js Course Starter Kit",
-  "subtitle": "for Frontend Masters",
-  "frontendMastersLink": "https://frontendmasters.com/courses/complete-react-v9/",
+  "title": "Build a Fullstack Next.js App, v4",
+  "subtitle": "Learn how to ship fullstack, enterprise-ready apps",
+  "frontendMastersLink": "https://frontendmasters.com/courses/fullstack-app-next-v4/",
   "social": {
     "linkedin": "btholt",
     "github": "btholt",
     "twitter": "holtbt",
     "bluesky": "brianholt.me"
   },
-  "description": "A starter kit for making really amazing courses, optimized for Frontend Masters",
-  "keywords": ["your", "Google", "keywords", "here"],
-  "productionBaseUrl": "/next-course-starter",
+  "description": "Build a production-ready team wiki from scratch using Next.js, TypeScript, and modern SaaS tools. Master authentication, database integration, AI features, and deployment patterns.",
+  "keywords": [
+    "Next.js",
+    "fullstack",
+    "React",
+    "TypeScript",
+    "authentication",
+    "database",
+    "Postgres",
+    "Vercel",
+    "deployment",
+    "SaaS",
+    "AI integration",
+    "modern web development"
+  ],
   "csvPath": "./out/lessons.csv",
   "llmFullTextPath": "./out/llms.txt"
 }
