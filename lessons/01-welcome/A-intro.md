@@ -11,6 +11,7 @@
 
 ## Styling & UI Foundation
 
+- We're going to style a sign up / sign in page
 - Tailwind CSS setup and configuration
 - Radix UI primitives and shadcn/ui components
 - Building our wiki's core layout and navigation
@@ -18,7 +19,7 @@
 
 ## Authentication & Authorization
 
-- Stack Auth setup and configuration
+- Neon Auth setup and configuration
 - Middleware for route protection
 - User registration and login flows
 - Role-Based Access Control (RBAC): Admin, Editor, Viewer
