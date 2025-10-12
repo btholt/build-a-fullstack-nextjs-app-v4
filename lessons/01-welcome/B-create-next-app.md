@@ -60,5 +60,5 @@ There's a good chance there will be some drift in how Create Next App works betw
 
 > 🏁 This is the [00-start][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
 
-[cna]: https://nextjs.org/docs/app/api-reference/cli/create-next-app
 [checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/00-start
+[cna]: https://nextjs.org/docs/app/api-reference/cli/create-next-app

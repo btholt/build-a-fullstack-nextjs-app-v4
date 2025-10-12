@@ -95,3 +95,7 @@ if (!user) {
 ```
 
 This still only checks that the user has logged in - we're still letting any user edit any article, but we'll get there soon. But that is auth! Congrats!
+
+> 🏁 This is the [03-auth][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/03-auth
