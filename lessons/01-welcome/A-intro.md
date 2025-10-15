@@ -41,6 +41,13 @@
 - File attachment system
 - Rich text editing considerations
 
+## Caching & Performance
+
+- Upstash Redis setup
+- When and what to cache in a wiki
+- Cache invalidation strategies
+- Performance optimization patterns
+
 ## Email Integration
 
 - Resend setup for transactional emails
@@ -54,27 +61,6 @@
 - Page content summarization
 - AI-powered search suggestions
 - Implementing AI features thoughtfully
-
-## Caching & Performance
-
-- Upstash Redis setup
-- When and what to cache in a wiki
-- Cache invalidation strategies
-- Performance optimization patterns
-
-## Testing
-
-- Playwright setup for end-to-end testing
-- Testing authentication flows
-- Testing CRUD operations
-- Testing deployment readiness
-
-## API Design & Error Handling
-
-- REST API patterns and conventions
-- Error handling and user feedback
-- Validation with Zod
-- API rate limiting
 
 ## Deployment & Production
 
@@ -96,3 +82,19 @@
 - What we built and what you learned
 - Next steps and advanced topics
 - Resources for continued learning
+
+# Cut
+
+## Testing
+
+- Playwright setup for end-to-end testing
+- Testing authentication flows
+- Testing CRUD operations
+- Testing deployment readiness
+
+## API Design & Error Handling
+
+- REST API patterns and conventions
+- Error handling and user feedback
+- Validation with Zod
+- API rate limiting
