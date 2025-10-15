@@ -55,3 +55,7 @@ if (!(await authorizeUserToEditArticle(user.id, +id))) {
 That's it!
 
 What about error handling? There's a couple ways of handling errors with server actions and I find this to be the most straightforward: just throw an error and catch it on the client. This isn't like a normal API with status codes and such - with a server action there's no public reusable API, just really remote code execution. You could also return status codes in the replies if you want to mimic that aspect of API calls, but that point you may almost just be better off making real APIs. The point of server actions to have them feel more like code than remote API invokations.
+
+> 🏁 This is the [04-database][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/04-database
