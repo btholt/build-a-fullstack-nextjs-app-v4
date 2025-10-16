@@ -98,3 +98,11 @@
 - Error handling and user feedback
 - Validation with Zod
 - API rate limiting
+
+========
+
+To back port
+
+- Pageviewer action / UI
+- imageUrl being pushed through on actions and helpers
+- clean up lib - either put all db/cache/email in there, or just get rid of it
