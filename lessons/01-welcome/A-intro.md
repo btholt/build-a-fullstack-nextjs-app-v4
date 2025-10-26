@@ -1,104 +1,3 @@
-# Build a Fullstack Next.js App, v4
-
-## Introduction & Setup
-
-- Welcome to Fullstack Next.js
-- Thanks to Scott Moss & building on v3
-- Prerequisites: Intro to React, Intermediate React, and Intro to Next.js
-- The Stack: Our opinionated choices and alternatives
-- Project Overview: Building a Team Wiki/Knowledge Base
-- Initial setup and project structure
-
-## Styling & UI Foundation
-
-- We're going to style a sign up / sign in page
-- Tailwind CSS setup and configuration
-- Radix UI primitives and shadcn/ui components
-- Building our wiki's core layout and navigation
-- Responsive design patterns
-
-## Authentication & Authorization
-
-- Neon Auth setup and configuration
-- Middleware for route protection
-- User registration and login flows
-- Role-Based Access Control (RBAC): Admin, Editor, Viewer
-- Protecting wiki pages and admin routes
-
-## Database & Data Layer
-
-- Neon Postgres setup and configuration
-- Drizzle ORM setup
-- Database schema design (users, pages, revisions)
-- Relationships and foreign keys
-- CRUD operations for wiki pages
-- Database migrations and versioning
-
-## File Storage & Rich Content
-
-- Vercel Blob for file uploads
-- Image handling in wiki pages
-- File attachment system
-- Rich text editing considerations
-
-## Caching & Performance
-
-- Upstash Redis setup
-- When and what to cache in a wiki
-- Cache invalidation strategies
-- Performance optimization patterns
-
-## Email Integration
-
-- Resend setup for transactional emails
-- Welcome emails and email verification
-- Notification emails for page updates
-- Email templates and best practices
-
-## AI Integration
-
-- Setting up AI inference (OpenAI/Anthropic via Vercel AI SDK)
-- Page content summarization
-- AI-powered search suggestions
-- Implementing AI features thoughtfully
-
-## Deployment & Production
-
-- Environment management: local → preview → production
-- Neon database branching strategy
-- Vercel deployment configuration
-- Environment variables and secrets
-- Basic monitoring and error tracking
-
-## Observability & Maintenance
-
-- Vercel's built-in analytics and logs
-- Error monitoring and alerting
-- Performance monitoring
-- Maintenance best practices
-
-## Wrap-up
-
-- What we built and what you learned
-- Next steps and advanced topics
-- Resources for continued learning
-
-# Cut
-
-## Testing
-
-- Playwright setup for end-to-end testing
-- Testing authentication flows
-- Testing CRUD operations
-- Testing deployment readiness
-
-## API Design & Error Handling
-
-- REST API patterns and conventions
-- Error handling and user feedback
-- Validation with Zod
-- API rate limiting
-
 ========
 
 To back port
@@ -117,3 +16,68 @@ turbopack: {
   root: dirname(__filename),
 },
 ```
+
+- BLOB_BASE_URL
+
+=======
+
+Welcome to Build a Fullstack Next.js App, v4!
+
+> You do not need to have taken v3 of this course or previous, this is just the fourth iteration of it.
+
+I am very honored in particular to teach this as the man who taught the previous three versions of this course, [Scott Moss][scotty] is a man I admire a lot and a close friend. [His version][v3] of this is quite a bit different than mine - it uses different pieces for auth, database, etc. for it and focuses a lot more on using AI to author the course. If that resonates with you, go check it out.
+
+## Why am I teaching this course?
+
+I use Next.js, a lot, both professionally and personally. In fact, all of my course websites [including this one][content-repo] are built using a [Next.js template][template] which I have been maintaining since January 2022. The previous version was built on Gatsby and I started that one in September 2018. This makes this course starter by far the longest I have ever maintained one piece of software!
+
+Vercel is one of Neon (which is what I work on)'s closest partners and so Next.js is essentially the first thing we use for nearly every project we start. We support lots of stuff, but we nearly always start with Next.js. It's popular, but it's also very productive. As such, I've built a trillion of apps to similar to this one. It's just an amazing meta framework for being productive quickly. If you like React Server Components, this framework really leans into it and it's great.
+
+I like React, I like Node.js, and I like shipping. Next.js is the nexus of the three.
+
+## What about other React Meta Frameworks
+
+Love 'em. Go take a peak at [TanStack Start's home page][start] and see that Neon is listed among the sponsors. Astro is awesome. Remix is definitely carving its own niche and merits a glance. The non-React ones are amazing too: SvelteKit, SolidStart, Nuxt, any of them. I'd endorse you building with any one of those. You should go take a look and see what they excel at and what they're not great at. For example, if I was rebuilding my course builder, I'd probably strongly consider Astro and it's more built for this use-case: heavy content websites. If you don't want to or don't need to use React Server Components, TanStack Start is a perfect place to land. You are spoiled for choice.
+
+## Who am I?
+
+My name is Brian Holt, and I am a product manager at Databricks working on Neon and Databricks apps. I came into Databricks as part of the Neon acquisition and it's been amazing to try and bring Neon to not just use cases like this, but to agentic use cases like Replit, v0, Anything, Same, Riff, and many others which is where I get to spend most of my time - how can AI-created apps manage and use databases. Prior to Neon, I was a PM, VP, dev rel, or JavaScript engineer at Snowflake, Stripe, Microsoft, LinkedIn, Netflix, Reddit, and a few others.
+
+I currently live in the Sacramento, CA area with my wife, two kids, and our adorable pup Luna. Beyond just really enjoying writing code and sharing that knowledge with others, I enjoy snowboarding, playing Elden Ring Nightreign poorly or any roguelike games, finding the finest cup of coffee or pint of hazy IPA, struggling to hit a golf ball onto a fairway, panting on a Peloton or getting dropped by the peloton while outdoors, and just trying to be a good dad to two smart gremlins that are definitely outclassing me already.
+
+Please catch up with me on social media! Be aware that I'm awful at responding to DMs!!
+
+- [𝕏][x]
+- [Bluesky][bs]
+- [LinkedIn][li]
+- [GitHub][gh]
+
+## Where to File Issues
+
+I write these courses by hand (only minimal assistance by Claude, the words are all mine) and take care to not make mistakes. However when teaching over ten hours of material, mistakes are inevitable, both here in the grammar and in the course with the material. However I (and the wonderful team at Frontend Masters) are constantly correcting the mistakes so that those of you that come later get the best product possible. If you find a mistake we'd love to fix it. The best way to do this is to [open a pull request or file an issue on the GitHub repo][site]. While I'm always happy to chat and give advice on social media, I can't be tech support for everyone. And if you file it on GitHub, those who come later can Google the same answer you got.
+
+## How the repo works
+
+There are two repos for this class: [the website you're currently on][site] and [the example projects][projects]. To get set up, clone or [download][zip] the projects repo:
+
+```bash
+git clone https://github.com/btholt/fullstack-next-wiki.git
+```
+
+I've written a whole project for you to work with, a wiki editor and viewer, so we'll be working with that for our project throughout the course.
+
+> And one last request! [Please star this repo][site]. It helps the course be more discoverable and with my fragile ego.
+
+[scotty]: https://frontendmasters.com/teachers/scott-moss/?code=holt
+[v3]: https://frontendmasters.com/courses/fullstack-app-next-v3/?code=holt
+[content-repo]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4
+[template]: https://github.com/btholt/next-course-starter/
+[start]: https://tanstack.com/start/latest
+[x]: https://twitter.com/holtbt
+[bs]: https://bsky.app/profile/brianholt.me
+[li]: https://www.linkedin.com/in/btholt/
+[gh]: https://github.com/btholt
+[site]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4
+[projects]: https://github.com/btholt/https://github.com/btholt/fullstack-next-wiki
+[issues]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/issues
+[zip]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/archive/refs/heads/main.zip
