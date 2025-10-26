@@ -167,11 +167,11 @@ header .cta-btn {
 }
 
 .jumbotron .courseInfo {
-  background: var(--primary);
+  background: black;
 }
 
 .jumbotron .courseIcon {
-  background: var(--secondary);
+  background: white;
 }
 
 .jumbotron .courseIcon img {
@@ -203,11 +203,11 @@ header .cta-btn {
 .navbar-brand.navbar-brand a {
   text-transform: uppercase;
   font-weight: bold;
-  color: var(--text-main-headers);
+  color: var(--highlight);
 }
 
 .lesson-section-title {
-  color: var(--text-main-headers);
+  color: var(--highlight);
 }
 
 .lesson-container {
@@ -399,7 +399,7 @@ ol.sections-name .lesson-preface {
   position: relative;
   align-items: center;
   justify-content: center;
-  background: var(--secondary);
+  background: black;
   font-size: 100px;
   padding: 25px;
   width: 40%;
@@ -532,7 +532,7 @@ code,
 pre code,
 pre code.hljs {
   background-color: var(--emphasized-bg);
-  color: #000;
+  /* color: var(--primary); */
 }
 
 pre code,
@@ -542,6 +542,8 @@ pre code.hljs {
 
 pre {
   position: relative;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .div-copy {

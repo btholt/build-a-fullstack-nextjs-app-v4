@@ -1,7 +1,7 @@
 .footer {
   width: 100%;
   padding: 50px 15px;
-  background-color: var(--primary);
+  background-color: black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -45,11 +45,13 @@
   text-decoration: underline;
 }
 
-.social svg, .theme-icons svg {
+.social svg,
+.theme-icons svg {
   transition: opacity 0.25s;
 }
 
-.social svg:hover, .theme-icons svg:hover {
+.social svg:hover,
+.theme-icons svg:hover {
   opacity: 0.4;
 }
 
