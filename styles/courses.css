@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 /* mini css reset */
 html {
@@ -27,7 +27,7 @@ img {
 }
 
 body {
-  font-family: "Open Sans";
+  font-family: "Nunito";
   background: linear-gradient(90deg, var(--bg-main) 15px, transparent 1%) center,
     linear-gradient(var(--bg-main) 15px, transparent 1%) center, var(--bg-dots);
   background-size: 16px 16px;
@@ -532,7 +532,7 @@ code,
 pre code,
 pre code.hljs {
   background-color: var(--emphasized-bg);
-  /* color: var(--primary); */
+  /* color: var(--primpenary); */
 }
 
 pre code,
