@@ -1,26 +1,3 @@
-========
-
-To back port
-
-- Pageviewer action / UI
-- imageUrl being pushed through on actions and helpers
-- clean up lib - either put all db/cache/email in there, or just get rid of it
-- TypeScript errors with ViewerArticle
-- BASE_URL for email
-- Use drizzle-seed instead of our seed script
-- don't try/catch cached get articles - jsut return it as it's already an array
-- put a note about turbopack root file
-
-```javascript
-turbopack: {
-  root: dirname(__filename),
-},
-```
-
-- BLOB_BASE_URL
-
-=======
-
 Welcome to Build a Fullstack Next.js App, v4!
 
 > You do not need to have taken v3 of this course or previous, this is just the fourth iteration of it.
@@ -40,6 +17,8 @@ I like React, I like Node.js, and I like shipping. Next.js is the nexus of the t
 Love 'em. Go take a peak at [TanStack Start's home page][start] and see that Neon is listed among the sponsors. Astro is awesome. Remix is definitely carving its own niche and merits a glance. The non-React ones are amazing too: SvelteKit, SolidStart, Nuxt, any of them. I'd endorse you building with any one of those. You should go take a look and see what they excel at and what they're not great at. For example, if I was rebuilding my course builder, I'd probably strongly consider Astro and it's more built for this use-case: heavy content websites. If you don't want to or don't need to use React Server Components, TanStack Start is a perfect place to land. You are spoiled for choice.
 
 ## Who am I?
+
+![Brian teaching](/images/social-share-cover.jpg)
 
 My name is Brian Holt, and I am a product manager at Databricks working on Neon and Databricks apps. I came into Databricks as part of the Neon acquisition and it's been amazing to try and bring Neon to not just use cases like this, but to agentic use cases like Replit, v0, Anything, Same, Riff, and many others which is where I get to spend most of my time - how can AI-created apps manage and use databases. Prior to Neon, I was a PM, VP, dev rel, or JavaScript engineer at Snowflake, Stripe, Microsoft, LinkedIn, Netflix, Reddit, and a few others.
 

@@ -126,7 +126,9 @@ Let's go make it work. Rename `celebration-email.ts`'s file extension to `celebr
 // at top
 import CelebrationTemplate from "./templates/celebration-template";
 
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 // grab name and title
 const response = await db.select({
@@ -157,6 +159,7 @@ const emailRes = await resend.emails.send({
 - Normally I'd be a bit more useful about the BASE_URL, but for here it's fine for the email
 - Otherwise it's jsut getting the right data to render.
 - These emails look great! And we don't have to write painful email templates.
+- Vercel will populate that URL automatically - otherwise we want it to head to local dev.
 
 Congrats! Adding email to a modern app is so easy. Adding something like Twilio for texting isn't super hard either, it'll feel very similar.
 

@@ -1,16 +1,3 @@
-- Go to Upstash, sign up/in
-- Go to Redis tab
-- Create database
-- Give it a name and region (preferably close to database region)
-- Free plan is fine
-- Copy the rest tokens (you could totally do this TCP / normal Redis SDK)
-- `npm i @upstash/redis`
-- Update get all articles data helper
-- Update create article action to delete cache
-- Pageviews
-
-====
-
 Now let's look at caching and using a key-value store in your app. I love key-value stores - they're simple tools that yield powerful results. I actually rewrote some of the Redis server as Postgres, just as a fun exercise, [see code here][rtp].
 
 So what is Redis? [I actually teach a fun course on it][redis] if you're interested. It's a key-value store, and that is exactly what it sounds like - you use various keys to access values in a database. An imperfect way to model that in your head is you can think of it as the world's biggest JavaScript object.
