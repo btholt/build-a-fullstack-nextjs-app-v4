@@ -160,5 +160,8 @@ const emailRes = await resend.emails.send({
 
 Congrats! Adding email to a modern app is so easy. Adding something like Twilio for texting isn't super hard either, it'll feel very similar.
 
+> 🏁 This is the [07-email][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/07-email
 [react-email]: https://react.email/
 [tw]: https://www.npmjs.com/package/@react-email/tailwind

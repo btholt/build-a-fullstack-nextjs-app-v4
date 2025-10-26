@@ -106,3 +106,14 @@ To back port
 - Pageviewer action / UI
 - imageUrl being pushed through on actions and helpers
 - clean up lib - either put all db/cache/email in there, or just get rid of it
+- TypeScript errors with ViewerArticle
+- BASE_URL for email
+- Use drizzle-seed instead of our seed script
+- don't try/catch cached get articles - jsut return it as it's already an array
+- put a note about turbopack root file
+
+```javascript
+turbopack: {
+  root: dirname(__filename),
+},
+```
