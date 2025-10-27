@@ -12,14 +12,15 @@ So why now? Why do I like Drizzle instead of choosing to just to continue to do 
 So let's get started! We're going to need a few packages
 
 ```bash
-npm i drizzle-orm @neondatabase/serverless ws bufferutil dotenv
+npm i drizzle-orm @neondatabase/serverless dotenv
 npm i -D drizzle-kit drizzle-seed
 ```
 
 - The ORM package is package that you'll actually use in your codebase.
 - The drizzle-kit package is all the CLI commands you need to run Drizzle. So creating migrations, running migrations, etc.
 - We could use the normal pg and postgres.js packages, and in many cases you might want to. These use TCP for their connections and support connection pooling that leave connections open which means lower-latency and generally faster connections. However initial connections for these sorts of packages take a while and really aren't a good fit for things like serverless environments where connections will be spinning up and spinning down frequently.
-- We're going to use the Neon serverless driver. This allows us to do SQL over either HTTP or WebSockets (and we're going to do websockets.) Honestly if we were going to scale up this project, we'd probably want to do the TCP drivers as it might make more sense, but I usually get started with the serverless driver and switch when I see it being helpful. Both work really well.
+- We're going to use the Neon serverless driver. This allows us to do SQL over either HTTP or WebSockets (and we're going to do HTTP.) Honestly if we were going to scale up this project, we'd probably want to do the TCP drivers as it might make more sense, but I usually get started with the serverless driver and switch when I see it being helpful. Both work really well.
+- Doing Neon over HTTP is perfectly suited for Vercel's serverless architecture, but it does carry some performance overhead. If you're really performance sensitive or doing transactions is really important to you, we'd need to rearchitect this to happen over websockets. But we don't so this works!
 - We're also install drizzle-seed which makes seeding your Drizzle database very easy.
 
 Okay, let's start making our database work. Normally you'd need to go to Neon.com and create your project and get your DATABASE_URL and put that in your .env file, but we did that as part of setting up auth. So let's go ahead and start with our config.

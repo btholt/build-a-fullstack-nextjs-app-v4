@@ -4,17 +4,29 @@ Welcome to Build a Fullstack Next.js App, v4!
 
 I am very honored in particular to teach this as the man who taught the previous three versions of this course, [Scott Moss][scotty] is a man I admire a lot and a close friend. [His version][v3] of this is quite a bit different than mine - it uses different pieces for auth, database, etc. for it and focuses a lot more on using AI to author the course. If that resonates with you, go check it out.
 
+## Who is this course for?
+
+**You**.
+
+I tried to make this generally applicable to most students, but there is some assumed knowledge here. If you are here via the [Frontend Masters React / Next.js learning path][path] then you are very much in the right place. Otherwise here's what I'm assuming about you.
+
+- You have some skll in web dev and JavaScript. If not, see [Frontend Master's beginning learner's path][web-dev]
+- You have some skill in React. If not, see [Complete Intro to React][react]
+- You have some skill in Next.js. If not, see [Intermediate React][intermediate] and [Next.js Fundamentals][next]
+
+Everything else I'll try to explain as we go - you don't need to be an AI, Node.js, or Linux wiz to be here - we can cover only what we need and focus on building cool Next.js apps.
+
 ## Why am I teaching this course?
 
 I use Next.js, a lot, both professionally and personally. In fact, all of my course websites [including this one][content-repo] are built using a [Next.js template][template] which I have been maintaining since January 2022. The previous version was built on Gatsby and I started that one in September 2018. This makes this course starter by far the longest I have ever maintained one piece of software!
 
-Vercel is one of Neon (which is what I work on)'s closest partners and so Next.js is essentially the first thing we use for nearly every project we start. We support lots of stuff, but we nearly always start with Next.js. It's popular, but it's also very productive. As such, I've built a trillion of apps to similar to this one. It's just an amazing meta framework for being productive quickly. If you like React Server Components, this framework really leans into it and it's great.
+Vercel is one of Neon's closest partners, and Next.js is often the first framework we reach for when starting new projects. While we support many frameworks, Next.js has proven particularly productive for our use cases. It's popular, but it's also very productive. As such, I've built tons of apps to similar to this one. It's just an amazing meta framework for being productive quickly. If you like React Server Components, this framework really leans into it and it's great.
 
 I like React, I like Node.js, and I like shipping. Next.js is the nexus of the three.
 
 ## What about other React Meta Frameworks
 
-Love 'em. Go take a peak at [TanStack Start's home page][start] and see that Neon is listed among the sponsors. Astro is awesome. Remix is definitely carving its own niche and merits a glance. The non-React ones are amazing too: SvelteKit, SolidStart, Nuxt, any of them. I'd endorse you building with any one of those. You should go take a look and see what they excel at and what they're not great at. For example, if I was rebuilding my course builder, I'd probably strongly consider Astro and it's more built for this use-case: heavy content websites. If you don't want to or don't need to use React Server Components, TanStack Start is a perfect place to land. You are spoiled for choice.
+Love 'em. Go take a peek at [TanStack Start's home page][start] and see that Neon is listed among the sponsors. Astro is awesome. Remix is definitely carving its own niche and merits a glance. The non-React ones are amazing too: SvelteKit, SolidStart, Nuxt, any of them. I'd endorse you building with any one of those. You should go take a look and see what they excel at and what they're not great at. For example, if I was rebuilding my course builder, I'd probably strongly consider Astro and it's more built for this use-case: heavy content websites. If you don't want to or don't need to use React Server Components, TanStack Start is a perfect place to land. You are spoiled for choice.
 
 ## Who am I?
 
@@ -57,6 +69,11 @@ I've written a whole project for you to work with, a wiki editor and viewer, so 
 [li]: https://www.linkedin.com/in/btholt/
 [gh]: https://github.com/btholt
 [site]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4
-[projects]: https://github.com/btholt/https://github.com/btholt/fullstack-next-wiki
+[projects]: https://github.com/btholt/fullstack-next-wiki
 [issues]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/issues
-[zip]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/archive/refs/heads/main.zip
+[zip]: https://github.com/btholt/fullstack-next-wiki/archive/refs/heads/main.zip
+[path]: https://frontendmasters.com/learn/react/?code=holt
+[react]: https://holt.fyi/react
+[intermediate]: https://holt.fyi/intermediate-react
+[next]: https://frontendmasters.com/courses/next-js-v4/?code=holt
+[web-dev]: https://frontendmasters.com/learn/beginner/

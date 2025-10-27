@@ -31,7 +31,7 @@ export async function createArticle(data: CreateArticleInput) {
 ```
 
 - Looks fairly similar to our reads, only here we just use `insert` instead of `select`.
-- We're only checking that the user is logged in, not that the correct user can edit the article. We'll do that in the next section.
+- We're only checking that the user is logged in, not that the correct user can edit the article. We'll implement proper authorization in the next section.
 
 Let's do update and delete.
 

@@ -8,7 +8,7 @@ I _think_ this course would work with recent versions of [bun][bun] but it's unt
 
 ## Tools FAQ
 
-### What tools are your using?
+### What tools are you using?
 
 - Visual Studio Code – I used to work at Microsoft on VS Code so it's no surprise that I'll be using it in this course. We'll also be using a few extensions that I'll call out as we get there.
 - I also use Cursor fairly frequently as well, particularly when I have large amounts of code to generate.

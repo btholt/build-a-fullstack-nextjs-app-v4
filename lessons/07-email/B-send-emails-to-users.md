@@ -42,7 +42,7 @@ export default async function sendCelebrationEmail(
 
   console.log(email);
 
-  // this only works if you've set up your own custom domain on Resend like I have
+  // OPTION 1: this only works if you've set up your own custom domain on Resend like I have
   const emailRes = await resend.emails.send({
     from: "Wikimasters <noreply@mail.holt.courses>", // should be your domain
     to: email,
@@ -50,7 +50,8 @@ export default async function sendCelebrationEmail(
     html: "<h1>Congrats!</h1><p>You're an amazing author!</p>",
   });
 
-  // do this if you haven't set up your custome domain
+  // OPTION 2: If you haven't set up a custom domain (development/testing)
+  // Uncomment this and comment out Option 1:
   //   const emailRes = await resend.emails.send({
   //     from: "Wikimasters <onboarding@resend.dev>", // I believe it only lets you send from Resend if you haven't set up your domain
   //     to: "<the email you signed up with>", // unless you set up your own domain, you can only email yourself

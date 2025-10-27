@@ -8,7 +8,9 @@ Run the following:
 npx create-next-app@15.5.3 wikimasters
 ```
 
-I choose all the defaults except I chose Biome instead of ESLint. Biome is a very cool project that is both a linter and a formatter.
+> I built this course with Next.js 15 - this may well work with future versions but it's always hard to know. Either use 15 like me or just know there may be subtle differences if you use a future version.
+
+Accept all the defaults, but select Biome instead of ESLint when prompted. Biome is a very cool project that is both a linter and a formatter.
 
 This will create a new Next.js app for us and ask us a few questions. Normally you would do `@latest` instead of the version I chose, but for our purposes I want it match as close to my environment as possible so the code continues to work long-term.
 

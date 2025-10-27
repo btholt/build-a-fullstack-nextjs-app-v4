@@ -19,7 +19,7 @@ try {
     url: (blob as any).url ?? "",
     size: file.size,
     type: file.type,
-    filename: (blob as any).pathname ?? file.name,
+    filename: blobResult.pathname ?? file.name,
   };
 } catch (err) {
   console.error("❌ Vercel Blob upload error:", err);
