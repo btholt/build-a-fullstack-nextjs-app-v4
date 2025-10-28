@@ -11,7 +11,7 @@
   --text-footer: white;
 
   --bg-main: white;
-  --bg-dots: var(--highlight);
+  --bg-dots: var(--bg-main);
   --bg-lesson: white;
 
   --nav-buttons: var(--highlight);
@@ -34,14 +34,14 @@
 
   --text-header: var(--primary);
   --text-main-headers: var(--highlight);
-  --text-links: #0068d6;
+  --text-links: var(--primary);
   --text-footer: var(--highlight);
 
   --lesson-text: rgb(218, 218, 218);
 
-  --bg-main: #1f1f1f;
-  --bg-dots: var(--highlight);
-  --bg-lesson: #323232;
+  --bg-main: black;
+  --bg-dots: var(--bg-main);
+  --bg-lesson: rgb(26, 26, 26);
   --nav-buttons: var(--secondary);
   --nav-buttons-text: var(--primary);
   --nav-buttons-text-hover: var(--highlight);

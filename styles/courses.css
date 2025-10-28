@@ -171,7 +171,7 @@ header .cta-btn {
 }
 
 .jumbotron .courseIcon {
-  background: white;
+  background: var(--bg-lesson);
 }
 
 .jumbotron .courseIcon img {
@@ -399,7 +399,7 @@ ol.sections-name .lesson-preface {
   position: relative;
   align-items: center;
   justify-content: center;
-  background: black;
+  background: rgb(10, 10, 10);
   font-size: 100px;
   padding: 25px;
   width: 40%;
@@ -414,8 +414,8 @@ ol.sections-name .lesson-preface {
 ol.sections-name .lesson-preface::before {
   content: counter(my-awesome-counter);
   position: absolute;
-  top: 0;
-  left: 5px;
+  top: 5px;
+  left: 10px;
   font-size: 20px;
   font-weight: bold;
   color: var(--icons);
@@ -590,4 +590,21 @@ pre {
 .div-copy.clicked .tooltip-copy::before,
 .div-copy.clicked .tooltip-copy::after {
   opacity: 1;
+}
+
+[data-theme="dark"] {
+  
+  .lesson .lesson-content a {
+    border-bottom: 1px solid hsl(0, 0%, 40%);
+    transition: border-bottom .2s;
+  }
+  
+  .lesson .lesson-content a:hover {
+    border-bottom: 1px solid hsl(0, 0%, 80%);
+  }
+
+  .courseIcon img {
+    filter: invert(100%);
+  }
+
 }
