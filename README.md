@@ -20,6 +20,6 @@ The code, including the code of the site itself and the code in the exercises, a
 
 [fem]: https://frontendmasters.com/workshops/fullstack-next-v4/
 [course]: https://fullstack-v4.holt.courses
-[project]: https://github.com/btholt/fullstack-v4-project/
+[project]: https://github.com/btholt/fullstack-next-wiki
 
 [React icons created by Pixel perfect - Flaticon](https://www.flaticon.com/free-icons/react)

@@ -1,4 +1,4 @@
-So, now we have a problem - we have some records that have AI summary records, and some that don't. Maybe we make those summary updates low priority, or maybe they fail on some normal interval. What can we do about that? We could make it check on reads but that slows down a critical path. What we could do better is schedule a job to run on some reoccuring basis, essentially a [cron job][cron].
+So, now we have a problem - we have some records that have AI summary records, and some that don't. Maybe we make those summary updates low priority, or maybe they fail on some normal interval. What can we do about that? We could make it check on reads but that slows down a critical path. What we could do better is schedule a job to run on some reoccurring basis, essentially a [cron job][cron].
 
 Vercel has a very easy way to do cron jobs for Next.js apps. You just define an API function and Vercel will call the API function for you. Vercel will put in a special variable so you can make sure it's only Vercel that will call the function too (we don't want random people invoking our jobs.)
 
@@ -94,11 +94,11 @@ Make a new file called `vercel.json` and we'll have it run once a week.
 }
 ```
 
-This will run every Sunday at midnight UTC. Feel free to make it whenver you want. If you need help [cron.guru][guru] is very helpful.
+This will run every Sunday at midnight UTC. Feel free to make it whenever you want. If you need help [cron.guru][guru] is very helpful.
 
 And there you go! Now you can have AI summaries running once a week, and in general you now how to do jobs with Vercel and Next.js. This is nice but it applies only to Vercel. Generally speaking I've usually done these sorts of jobs with serverless functions like Azure Functions or AWS Lambdas as those are easy to schedule.
 
-You also learned how to make API endpoints with Next.js. These days I think unless you're making endpoints available to outside users or mobile apps, it's a bit of an antipattern to make API endpoints as you should just be using React Server Components do all the connecting between clients and servers.
+You also learned how to make API endpoints with Next.js. These days I think unless you're making endpoints available to outside users or mobile apps, it's a bit of an anti-pattern to make API endpoints as you should just be using React Server Components do all the connecting between clients and servers.
 
 Lastly we learned how to do migrations with Drizzle. While this is a pretty simple example of it, this is how you do it - just modify your schema files and let Drizzle handle the rest!
 

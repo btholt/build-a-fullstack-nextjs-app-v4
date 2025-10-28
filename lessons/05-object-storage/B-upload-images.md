@@ -41,7 +41,7 @@ In actions/articles.ts
 imageUrl: data.imageUrl ?? undefined,
 ```
 
-`??` is the nullish operation - if the first thing is falsey then it gives you the second thing. In thise case if imageUrl is undefined, then it returns undefined. We could leave out the `?? undefined` but I feel like this is more clear.
+`??` is the nullish operation - if the first thing is falsey then it gives you the second thing. In this case if imageUrl is undefined, then it returns undefined. We could leave out the `?? undefined` but I feel like this is more clear.
 
 In lib/data/articles
 

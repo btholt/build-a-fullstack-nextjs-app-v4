@@ -10,7 +10,7 @@ By default, GitHub will also not let you deploy unless your tests pass (assuming
 
 Let's do something fun. Open a PR for something visual on the site : change a button color, add big text, anything. But do it in a branch, and then open a PR on GitHub for it.
 
-I just made one and it'll look somethingl like this: [make everything red PR][red]. You won't be able to see the PR as you're not on my Vercel team, but you can see Vercel deploys it for me, makes a preview available, that once I've merged we can then promote to production. This will also run the CI (which we'll set up in the next section.)
+I just made one and it'll look something like this: [make everything red PR][red]. You won't be able to see the PR as you're not on my Vercel team, but you can see Vercel deploys it for me, makes a preview available, that once I've merged we can then promote to production. This will also run the CI (which we'll set up in the next section.)
 
 Another cool thing: you can go in to the preview deploy and leave blocking comments that will block the merging on the PR until the PR author fixes them. Makes it awesome to give to product, marketing or executives who can hold things in new and more difficult ways (I'm mostly kidding.)
 

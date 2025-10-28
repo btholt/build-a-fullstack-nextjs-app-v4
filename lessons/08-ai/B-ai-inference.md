@@ -33,7 +33,7 @@ export default summarizeArticle;
 
 I love the AI SDK. It's a much nicer experience than say the OpenAI SDK's rituals can be, in my opinion.
 
-What's cool about the AI SDK is you can easily switch it to use Anthropic, OpenAI, etc. directly instead of going through Vercel. Smart marketing on their part because it means you can use their SDK no matter what and it's easy to switch to their AI Gatewawy
+What's cool about the AI SDK is you can easily switch it to use Anthropic, OpenAI, etc. directly instead of going through Vercel. Smart marketing on their part because it means you can use their SDK no matter what and it's easy to switch to their AI Gateway
 
 Let's say you wanted to use Anthropic directly. Here's what you'd do.
 

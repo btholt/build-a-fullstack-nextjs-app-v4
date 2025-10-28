@@ -84,7 +84,7 @@ Let's go make this work by adding it to pageviews.ts action.
 import sendCelebrationEmail from "@/email/celebration-email";
 const milestones = [10, 50, 100, 1000, 10000];
 
-// under newVal delcartion
+// under newVal declaration
 if (milestones.includes(newVal)) {
   sendCelebrationEmail(articleId, +newVal); // don't await so we don't block on sending the email, just send it
 }

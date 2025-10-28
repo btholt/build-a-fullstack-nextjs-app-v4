@@ -1,4 +1,4 @@
-Since this is a fullstack enterprise Next.js course, I wanted to impart some knowledge that I've earned by being involved in maintainig large Tailwind projects. It's generally the same principles as doing CSS, just flavored with having to do it with your React too.
+Since this is a fullstack enterprise Next.js course, I wanted to impart some knowledge that I've earned by being involved in maintaining large Tailwind projects. It's generally the same principles as doing CSS, just flavored with having to do it with your React too.
 
 ## Take advantage of Tailwind's theming
 

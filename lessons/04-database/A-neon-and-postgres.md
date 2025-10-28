@@ -4,9 +4,9 @@ Let's get going with Neon! Neon is a serverless Postgres provider that has some 
 
 > I'll also mention this is definitely not a Postgres class so we won't spend too much time on the SQL itself. If you want that, [try my SQL class][sql] to get started with SQL.
 
-The basic idea here though is that Postgres is a repository for your data, made to scale to as big as your data needs. You can think of a database like a massive spreadsheet - it has tables, rows, and columns. Those rows, columns, and rules can have data types, functions, validation, and all sorts of other logic on top of them. Postgres is one of the many relational databases that speak SQL and it happens to be the fastest growing by far. After having worked on or with MySQL, SQLite, MongoDB, and others, I'm convinced that unless you have some niche usecase you should always use Postgres.
+The basic idea here though is that Postgres is a repository for your data, made to scale to as big as your data needs. You can think of a database like a massive spreadsheet - it has tables, rows, and columns. Those rows, columns, and rules can have data types, functions, validation, and all sorts of other logic on top of them. Postgres is one of the many relational databases that speak SQL and it happens to be the fastest growing by far. After having worked on or with MySQL, SQLite, MongoDB, and others, I'm convinced that unless you have some niche use case you should always use Postgres.
 
-For our app, we want to add the database into a few places: reading to get the articles out of the database, and writing edits and updates to the database. That'll be enough for our usecase.
+For our app, we want to add the database into a few places: reading to get the articles out of the database, and writing edits and updates to the database. That'll be enough for our use case.
 
 > One cool feature of using Neon Auth is that your user data gets copied into your database, making it very easy to query instead of having to call an API to get it.
 

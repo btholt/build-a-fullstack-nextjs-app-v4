@@ -9,7 +9,7 @@ We are going to be using [shadcn ui][shadcn] for our design system. Let's dissec
 
 > Fun fact: [shadcn is a person][x]. He works at Vercel.
 
-Essentially it's a opinionated set of styles and componets. It's also a CLI that adds the components as you need them - it doesn't include everything at once which is nice.
+Essentially it's a opinionated set of styles and components. It's also a CLI that adds the components as you need them - it doesn't include everything at once which is nice.
 
 Let's go ahead and initialize it.
 
@@ -21,14 +21,14 @@ npx shadcn@3.3.1 init
 
 This will ask you to choose a tone. I think I went with slate? Feel free to choose your own base tone.
 
-This should add some styles and make some modifications to your project. One thing to note is that this will include some global styles, but in and of itself shadcn is a component system. You need to invidually add components. It does install a few dependencies like the icon library, some CSS helpers, and such. Don't worry about those too much - it's all for shadcn.
+This should add some styles and make some modifications to your project. One thing to note is that this will include some global styles, but in and of itself shadcn is a component system. You need to individually add components. It does install a few dependencies like the icon library, some CSS helpers, and such. Don't worry about those too much - it's all for shadcn.
 
 ```bash
 npx shadcn@3.3.1 add @shadcn/navigation-menu
 npx shadcn@3.3.1 add @shadcn/button
 ```
 
-Notice inside your app directory there is now a component/ui directory, and it has a navigation-menu.tsx and a button.tsx file in it. This is how shadcn works - it adds the code for the component to your library. This is cool because now it's _your_ component. Rather than trying to rebase and monkey patch a library, you can just directly edit the code. Long term this is more sustainable for using shadcn to craft your own design system instead of just a thin wrapper on top of someting like Bootstrap.
+Notice inside your app directory there is now a component/ui directory, and it has a navigation-menu.tsx and a button.tsx file in it. This is how shadcn works - it adds the code for the component to your library. This is cool because now it's _your_ component. Rather than trying to rebase and monkey patch a library, you can just directly edit the code. Long term this is more sustainable for using shadcn to craft your own design system instead of just a thin wrapper on top of something like Bootstrap.
 
 Let's go ahead and make a navigation menu using our new component (we're not going to modify any of the shadcn components themselves today but you should feel free to, that's why the code is in your codebase!)
 

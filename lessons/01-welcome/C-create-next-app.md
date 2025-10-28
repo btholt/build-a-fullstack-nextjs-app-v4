@@ -30,7 +30,7 @@ I also like to add typecheck to this list
 
 This will lint, format, and then eventually run the server for you. As this isn't an intro to Next course, not much of this should be new.
 
-> Good idea to install the [Biome.js VS Code extension][biome]. Very helpful so you don't need to wait unti CI/CD to find out you have issues
+> Good idea to install the [Biome.js VS Code extension][biome]. Very helpful so you don't need to wait until CI/CD to find out you have issues
 
 There's a good chance there will be some drift in how Create Next App works between when I write this and when you watch it, so feel free to just clone the repo here and start from 00-start to make sure we're totally on the same page.
 

@@ -157,7 +157,7 @@ const emailRes = await resend.emails.send({
 ```
 
 - Normally I'd be a bit more useful about the BASE_URL, but for here it's fine for the email
-- Otherwise it's jsut getting the right data to render.
+- Otherwise it's just getting the right data to render.
 - These emails look great! And we don't have to write painful email templates.
 - Vercel will populate that URL automatically - otherwise we want it to head to local dev.
 

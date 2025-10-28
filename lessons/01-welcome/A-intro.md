@@ -10,7 +10,7 @@ I am very honored in particular to teach this as the man who taught the previous
 
 I tried to make this generally applicable to most students, but there is some assumed knowledge here. If you are here via the [Frontend Masters React / Next.js learning path][path] then you are very much in the right place. Otherwise here's what I'm assuming about you.
 
-- You have some skll in web dev and JavaScript. If not, see [Frontend Master's beginning learner's path][web-dev]
+- You have some skill in web dev and JavaScript. If not, see [Frontend Master's beginning learner's path][web-dev]
 - You have some skill in React. If not, see [Complete Intro to React][react]
 - You have some skill in Next.js. If not, see [Intermediate React][intermediate] and [Next.js Fundamentals][next]
 
@@ -34,7 +34,7 @@ Love 'em. Go take a peek at [TanStack Start's home page][start] and see that Neo
 
 My name is Brian Holt, and I am a product manager at Databricks working on Neon and Databricks apps. I came into Databricks as part of the Neon acquisition and it's been amazing to try and bring Neon to not just use cases like this, but to agentic use cases like Replit, v0, Anything, Same, Riff, and many others which is where I get to spend most of my time - how can AI-created apps manage and use databases. Prior to Neon, I was a PM, VP, dev rel, or JavaScript engineer at Snowflake, Stripe, Microsoft, LinkedIn, Netflix, Reddit, and a few others.
 
-I currently live in the Sacramento, CA area with my wife, two kids, and our adorable pup Luna. Beyond just really enjoying writing code and sharing that knowledge with others, I enjoy snowboarding, playing Elden Ring Nightreign poorly or any roguelike games, finding the finest cup of coffee or pint of hazy IPA, struggling to hit a golf ball onto a fairway, panting on a Peloton or getting dropped by the peloton while outdoors, and just trying to be a good dad to two smart gremlins that are definitely outclassing me already.
+I currently live in the Sacramento, CA area with my wife, two kids, and our adorable pup Luna. Beyond just really enjoying writing code and sharing that knowledge with others, I enjoy snowboarding, playing Elden Ring Nightreign poorly or any rogue-like games, finding the finest cup of coffee or pint of hazy IPA, struggling to hit a golf ball onto a fairway, panting on a Peloton or getting dropped by the Peloton while outdoors, and just trying to be a good dad to two smart gremlins that are definitely outclassing me already.
 
 Please catch up with me on social media! Be aware that I'm awful at responding to DMs!!
 

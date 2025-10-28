@@ -14,7 +14,7 @@ Go to your Vercel dashboard, click on the AI Gateway tab. Click on Create API Ke
 AI_GATEWAY_API_KEY="<your key>"
 ```
 
-Next you probably need to stick a credit card in here to get the $5 free worth of credit. I know that's annoying but these free tiers get abused so much that I understand why (we have similar issue with Neon's free tier.) You could probably go buy a Visa $5 giftcard to get started or use something like Privacy.com to set up one that has hard limits on it. Up to you. Or you could use Ollama locally but it wouldn't work deployed.
+Next you probably need to stick a credit card in here to get the $5 free worth of credit. I know that's annoying but these free tiers get abused so much that I understand why (we have similar issue with Neon's free tier.) You could probably go buy a Visa $5 gift card to get started or use something like Privacy.com to set up one that has hard limits on it. Up to you. Or you could use Ollama locally but it wouldn't work deployed.
 
 Head to your project and `npm i ai` to get the Vercel AI SDK. This is probably one of the biggest selling points to me for using Vercel's AI Gateway - the SDK is really nice to use and allows you to easily switch between OpenAI, Anthropic, Google, etc. without having to modify any code.
 

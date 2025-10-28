@@ -1,6 +1,6 @@
 We are going to get started writing to our database using Drizzle. Drizzle is a phenomenal ORM, which stands for object-relational mapping. In reality it just means a it's a software package where you define the shape of your data, and it takes care of managing and querying the database for you. Instead of writing raw SQL statements, you write code that then gets translated into SQL for you.
 
-In the past I did not recommend using an ORM (I think you can find this in my previous Frontend Masters courses!) Why not? I had some pretty bad experiences over the year using ORMs in the earlier days of my career (mostly in PHP and Java.) I'd start using an ORM and it would be amazing: it made it easy to get started, to do basic selects and inserts, and the general 95% usecase (and I'll say generally speaking, writing this sort of SQL is not hard.) The problem came when you needed to do more advanced querying that the designers of the ORM didn't anticipate. All the sudden what was helping you work faster was a huge impedence on you doing what you want to do. You're suddenly fighting the framework instead of being helped by it. This happened frequently enough that I decided I'd rather just write SQL, and I did that for most of my career (I also like SQL, but it took a lot of practice for me to say that.)
+In the past I did not recommend using an ORM (I think you can find this in my previous Frontend Masters courses!) Why not? I had some pretty bad experiences over the year using ORMs in the earlier days of my career (mostly in PHP and Java.) I'd start using an ORM and it would be amazing: it made it easy to get started, to do basic selects and inserts, and the general 95% use case (and I'll say generally speaking, writing this sort of SQL is not hard.) The problem came when you needed to do more advanced querying that the designers of the ORM didn't anticipate. All the sudden what was helping you work faster was a huge impedance on you doing what you want to do. You're suddenly fighting the framework instead of being helped by it. This happened frequently enough that I decided I'd rather just write SQL, and I did that for most of my career (I also like SQL, but it took a lot of practice for me to say that.)
 
 So why now? Why do I like Drizzle instead of choosing to just to continue to do raw SQL?
 
@@ -20,7 +20,7 @@ npm i -D drizzle-kit drizzle-seed
 - The drizzle-kit package is all the CLI commands you need to run Drizzle. So creating migrations, running migrations, etc.
 - We could use the normal pg and postgres.js packages, and in many cases you might want to. These use TCP for their connections and support connection pooling that leave connections open which means lower-latency and generally faster connections. However initial connections for these sorts of packages take a while and really aren't a good fit for things like serverless environments where connections will be spinning up and spinning down frequently.
 - We're going to use the Neon serverless driver. This allows us to do SQL over either HTTP or WebSockets (and we're going to do HTTP.) Honestly if we were going to scale up this project, we'd probably want to do the TCP drivers as it might make more sense, but I usually get started with the serverless driver and switch when I see it being helpful. Both work really well.
-- Doing Neon over HTTP is perfectly suited for Vercel's serverless architecture, but it does carry some performance overhead. If you're really performance sensitive or doing transactions is really important to you, we'd need to rearchitect this to happen over websockets. But we don't so this works!
+- Doing Neon over HTTP is perfectly suited for Vercel's serverless architecture, but it does carry some performance overhead. If you're really performance sensitive or doing transactions is really important to you, we'd need to re-architect this to happen over websockets. But we don't so this works!
 - We're also install drizzle-seed which makes seeding your Drizzle database very easy.
 
 Okay, let's start making our database work. Normally you'd need to go to Neon.com and create your project and get your DATABASE_URL and put that in your .env file, but we did that as part of setting up auth. So let's go ahead and start with our config.
@@ -76,7 +76,7 @@ export type NewArticle = typeof articles.$inferInsert;
 - What's nice is we're not stuck calling "created_at" using snake case in JavaScript. Drizzle makes it easy for us to define our own alias of what we want to call it in code versus what it's called in the database. This was particularly helpful in a codebase I was working in where the actual names of the columns were very long and annoying due to being apart of another system but we could call it whatever we wanted in JS code.
 - `$inferSelect` and `$inferInsert` are probably two of the coolest black magic features in code I've ever used. It takes the database shape that we set up for the articles tables and turns it into a TypeScript type. We write the code once and we get both the TypeScript types and the database ORM to use. Amazing. If you're writing raw SQL, you need to author and maintain those types yourself.
 
-That's it! Now we have a schema that we can use to create our databse connection. Go create an index.ts file in the same directory.
+That's it! Now we have a schema that we can use to create our database connection. Go create an index.ts file in the same directory.
 
 ```typescript
 import { neon } from "@neondatabase/serverless";
@@ -110,7 +110,7 @@ npx drizzle-kit migrate
 
 This applies what we made with generate. And now you can see the empty tables in Neon. Pretty cool, right!?
 
-> You can also run `npx drizzle-kit push` to just yolo apply whatever schema you have at the moment. This is nice when you're making changes and you just want to apply the new schema and aren't ready to cautify what you have as code.
+> You can also run `npx drizzle-kit push` to just yolo apply whatever schema you have at the moment. This is nice when you're making changes and you just want to apply the new schema and aren't ready to codify what you have as code.
 
 I wrote a little seed script for you to have some database. **Note: you must have at least one user signed up via Neon Auth or this does not work**. Either sign up via your website or add one manually via the Neon console.
 
@@ -119,7 +119,7 @@ I wrote a little seed script for you to have some database. **Note: you must hav
 Let's make all of these npm scripts.
 
 ```json
-// the end of ytour scripts in your package.json
+// the end of your scripts in your package.json
 "db:seed": "tsx src/db/seed.ts",
 "db:generate": "drizzle-kit generate",
 "db:migrate": "drizzle-kit migrate"
