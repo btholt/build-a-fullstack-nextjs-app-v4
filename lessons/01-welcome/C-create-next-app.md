@@ -5,7 +5,7 @@ Go ahead and create a new Next.js app. I normally do this through [create-next-a
 Run the following:
 
 ```bash
-npx create-next-app@15.5.3 wikimasters
+npx create-next-app@latest wikimasters
 ```
 
 > I built this course with Next.js 15 - this may well work with future versions but it's always hard to know. Either use 15 like me or just know there may be subtle differences if you use a future version.
