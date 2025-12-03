@@ -218,3 +218,4 @@ That's it! That's the whole loop for managing shadcn, Tailwind, and Radix.
 [less]: https://lesscss.org/
 [stylus]: https://stylus-lang.com/
 [docs]: https://ui.shadcn.com/docs/components
+[tailwind]: https://tailwindcss.com/
