@@ -8,7 +8,7 @@ Run the following:
 npx create-next-app@latest wikimasters
 ```
 
-> I built this course with Next.js 15 - this may well work with future versions but it's always hard to know. Either use 15 like me or just know there may be subtle differences if you use a future version.
+> I built this course with Next.js 16 - this may well work with future versions but it's always hard to know. Either use 16 like me or just know there may be subtle differences if you use a future version.
 
 Accept all the defaults, but select Biome instead of ESLint when prompted. Biome is a very cool project that is both a linter and a formatter.
 
