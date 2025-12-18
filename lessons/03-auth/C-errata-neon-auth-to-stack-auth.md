@@ -1,6 +1,14 @@
 ---
-title: "Errata: Neon Auth to Stack Auth
+title: "Errata: Neon Auth to Stack Auth"
 ---
-I have a full write up of errata and the migration from Neon Auth to Stack Auth. You can [see it here][errata].
+## What Changed
+
+Neon Auth (powered by Stack Auth) has been deprecated. The `usersSync` table from drizzle-orm/neon that auto-synced users no longer works.
+
+## Solution 
+
+Sign up for [Stack Auth](https://stack-auth.com/) directly and sync users manually when they create articles.
+
+Follow the steps [in the project repo][errata] to migrate from Neon Auth to Stack Auth.
 
 [errata]: https://github.com/btholt/fullstack-next-wiki/blob/main/ERRATA.md
