@@ -7,7 +7,7 @@ Let's open src/lib/data/articles.ts.
 import db from "@/db/index";
 import { articles } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { usersSync } from "drizzle-orm/neon";
+import { usersSync } from "@/db/schema"; // <- this is different from the video - it's the new path, or it can be combined with the above import
 
 export async function getArticles() {
   const response = await db

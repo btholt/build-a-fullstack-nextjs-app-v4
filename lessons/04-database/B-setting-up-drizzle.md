@@ -45,9 +45,11 @@ This is just some basic config for Drizzle, nothing of note.
 
 Now go create src/db as a folder. Put in there schema.ts
 
+> 🚨 The recorded version of this course didn't have you set up the users table. Since this part of Neon Auth doesn't exist and Stack Auth doesn't have it, we are going to build a simple version of it ourselves. We are just going to handle the account creation part. If you want to later go and add more thorough syncing, it'd be a good exercise.
+
 ```typescript
 import { pgTable, serial, text, timestamp, boolean } from "drizzle-orm/pg-core";
-import { usersSync } from "drizzle-orm/neon";
+// import { usersSync } from "drizzle-orm/neon"; <- this doesn't work anymore
 
 export const articles = pgTable("articles", {
   id: serial("id").primaryKey(),
@@ -68,6 +70,14 @@ export default schema;
 
 export type Article = typeof articles.$inferSelect;
 export type NewArticle = typeof articles.$inferInsert;
+
+// add this
+export const usersSync = pgTable("usersSync", {
+  id: text("id").primaryKey(),  // Stack Auth user ID
+  name: text("name"),
+  email: text("email"),
+});
+export type User = typeof usersSync.$inferSelect;
 ```
 
 - While this is a lot of new code for you, if you know SQL it should all look _super_ familiar to you. We're basically doing `CREATE TABLE` commands in code. We're describing what data types we want and what constraints we want (like notNull or unique).
@@ -75,6 +85,40 @@ export type NewArticle = typeof articles.$inferInsert;
 - `references` sets up a foreign key. That means the authorId references the id key in the usersSync table.
 - What's nice is we're not stuck calling "created_at" using snake case in JavaScript. Drizzle makes it easy for us to define our own alias of what we want to call it in code versus what it's called in the database. This was particularly helpful in a codebase I was working in where the actual names of the columns were very long and annoying due to being apart of another system but we could call it whatever we wanted in JS code.
 - `$inferSelect` and `$inferInsert` are probably two of the coolest black magic features in code I've ever used. It takes the database shape that we set up for the articles tables and turns it into a TypeScript type. We write the code once and we get both the TypeScript types and the database ORM to use. Amazing. If you're writing raw SQL, you need to author and maintain those types yourself.
+
+> 🚨 We need to add this helper (which is not in the recorded version) to add sync'ing of our users to our users table
+
+```typescript
+import db from "@/db/index";
+import { usersSync } from "@/db/schema";
+
+type StackUser = {
+  id: string;
+  displayName: string | null;
+  primaryEmail: string | null;
+};
+
+/**
+ * Ensures the Stack Auth user exists in our local users table.
+ * Call this before creating articles to ensure the foreign key reference works.
+ */
+export async function ensureUserExists(stackUser: StackUser): Promise<void> {
+  await db
+    .insert(usersSync)
+    .values({
+      id: stackUser.id,
+      name: stackUser.displayName,
+      email: stackUser.primaryEmail,
+    })
+    .onConflictDoUpdate({
+      target: usersSync.id,
+      set: {
+        name: stackUser.displayName,
+        email: stackUser.primaryEmail,
+      },
+    });
+}
+```
 
 That's it! Now we have a schema that we can use to create our database connection. Go create an index.ts file in the same directory.
 

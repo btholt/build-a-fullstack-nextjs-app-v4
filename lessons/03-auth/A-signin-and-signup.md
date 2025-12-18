@@ -1,12 +1,16 @@
+> 🚨 The version of Neon Auth taught in this course is deprecated. This version of Neon Auth wrapped another service, Stack Auth. Luckily, you can still sign up directly for Stack Auth, but the database sync'ing that it did no longer works. I've modified the course notes to use Stack Auth. We will have to add several things that the videos don't have, but we've kept it fairly minimal so that the deviations from the videos is as small as possible. 🚨
+> There is a new version of Neon Auth that uses Better Auth, and you can use that if you please, but it works slightly different and uses a different SDK. But otherwise it's pretty similar!
+
 We are going to do now do auth using Neon Auth, which under the hood is the same as Stack Auth - they're just neatly linked if you use Neon and Neon Auth together.
+
+> We're going to skip using Neon Auth here and use Stack Auth
 
 - Head to Neon.com
 - Sign up for an account
 - Create a new project - use the most recent version of Postgres and it doesn't matter what cloud or region you choose
-- Click on the Neon Auth tab
-- Create your Neon Auth integration
-- Go to configuration, click generate keys
-- Copy the snippet and paste it into a `.env` file at the root of your project.
+- Copy the connection strings and paste it into a `.env` file at the root of your project.
+
+> Now go to stack-auth.com, sign up, and grab the environment keys.
 
 Your new .env file should look like
 

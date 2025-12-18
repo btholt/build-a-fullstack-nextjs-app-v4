@@ -12,11 +12,12 @@ export default resend;
 
 Now create in the same directory celebration-email.ts
 
+> 🚨 The import from @/db/schema for usersSync is fixed as it no longer comes from the Drizzle package, it comes from our migration we created.
+
 ```typescript
 import resend from "@/email";
 import db from "@/db";
-import { usersSync } from "drizzle-orm/neon";
-import { articles } from "@/db/schema";
+import { articles, usersSync } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export default async function sendCelebrationEmail(
