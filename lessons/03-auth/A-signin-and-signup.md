@@ -8,19 +8,24 @@ We are going to do now do auth using Neon Auth, which under the hood is the same
 - Head to Neon.com
 - Sign up for an account
 - Create a new project - use the most recent version of Postgres and it doesn't matter what cloud or region you choose
-- Copy the connection strings and paste it into a `.env` file at the root of your project.
+- Click the "Connect" button and copy the connection strings and paste it into a `.env` file at the root of your project.
 
-> Now go to stack-auth.com, sign up, and grab the environment keys.
+> Now go to [stack-auth.com](https://stack-auth.com), sign up, and grab the environment keys.
+
+- Create a new project on Stack Auth (fem-wikimasters)
+- Click `Project Keys` in the sidebar menu
+- Click `Create Project Keys` to generate keys for your project
+- Copy the `Next.js` keys into your `.env` file
 
 Your new .env file should look like
 
 ```
-# Neon Auth environment variables for Next.js
+# Stack Auth environment variables for Next.js
 NEXT_PUBLIC_STACK_PROJECT_ID='your project id'
 NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY='your publishable key'
 STACK_SECRET_SERVER_KEY='your secret key'
 
-# Database owner connection string
+# Neon Database owner connection string
 DATABASE_URL='your postgres connection string'
 ```
 
@@ -69,7 +74,7 @@ const user = await stackServerApp.getUser();
         </Button>
       </NavigationMenuItem>
     </>
-  );
+  )
 }
 ```
 
