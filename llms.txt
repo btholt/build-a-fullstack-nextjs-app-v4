@@ -1,0 +1,2416 @@
+# Intro
+
+Welcome to Build a Fullstack Next.js App, v4!
+
+> You do not need to have taken v3 of this course or previous, this is just the fourth iteration of it.
+
+I am very honored in particular to teach this as the man who taught the previous three versions of this course, [Scott Moss][scotty] is a man I admire a lot and a close friend. [His version][v3] of this is quite a bit different than mine - it uses different pieces for auth, database, etc. for it and focuses a lot more on using AI to author the course. If that resonates with you, go check it out.
+
+## Who is this course for?
+
+**You**.
+
+I tried to make this generally applicable to most students, but there is some assumed knowledge here. If you are here via the [Frontend Masters React / Next.js learning path][path] then you are very much in the right place. Otherwise here's what I'm assuming about you.
+
+- You have some skill in web dev and JavaScript. If not, see [Frontend Master's beginning learner's path][web-dev]
+- You have some skill in React. If not, see [Complete Intro to React][react]
+- You have some skill in Next.js. If not, see [Intermediate React][intermediate] and [Next.js Fundamentals][next]
+
+Everything else I'll try to explain as we go - you don't need to be an AI, Node.js, or Linux wiz to be here - we can cover only what we need and focus on building cool Next.js apps.
+
+## Why am I teaching this course?
+
+I use Next.js, a lot, both professionally and personally. In fact, all of my course websites [including this one][content-repo] are built using a [Next.js template][template] which I have been maintaining since January 2022. The previous version was built on Gatsby and I started that one in September 2018. This makes this course starter by far the longest I have ever maintained one piece of software!
+
+Vercel is one of Neon's closest partners, and Next.js is often the first framework we reach for when starting new projects. While we support many frameworks, Next.js has proven particularly productive for our use cases. It's popular, but it's also very productive. As such, I've built tons of apps to similar to this one. It's just an amazing meta framework for being productive quickly. If you like React Server Components, this framework really leans into it and it's great.
+
+I like React, I like Node.js, and I like shipping. Next.js is the nexus of the three.
+
+## What about other React Meta Frameworks
+
+Love 'em. Go take a peek at [TanStack Start's home page][start] and see that Neon is listed among the sponsors. Astro is awesome. Remix is definitely carving its own niche and merits a glance. The non-React ones are amazing too: SvelteKit, SolidStart, Nuxt, any of them. I'd endorse you building with any one of those. You should go take a look and see what they excel at and what they're not great at. For example, if I was rebuilding my course builder, I'd probably strongly consider Astro and it's more built for this use-case: heavy content websites. If you don't want to or don't need to use React Server Components, TanStack Start is a perfect place to land. You are spoiled for choice.
+
+## Who am I?
+
+![Brian teaching](/images/social-share-cover.jpg)
+
+My name is Brian Holt, and I am a product manager at Databricks working on Neon and Databricks apps. I came into Databricks as part of the Neon acquisition and it's been amazing to try and bring Neon to not just use cases like this, but to agentic use cases like Replit, v0, Anything, Same, Riff, and many others which is where I get to spend most of my time - how can AI-created apps manage and use databases. Prior to Neon, I was a PM, VP, dev rel, or JavaScript engineer at Snowflake, Stripe, Microsoft, LinkedIn, Netflix, Reddit, and a few others.
+
+I currently live in the Sacramento, CA area with my wife, two kids, and our adorable pup Luna. Beyond just really enjoying writing code and sharing that knowledge with others, I enjoy snowboarding, playing Elden Ring Nightreign poorly or any rogue-like games, finding the finest cup of coffee or pint of hazy IPA, struggling to hit a golf ball onto a fairway, panting on a Peloton or getting dropped by the Peloton while outdoors, and just trying to be a good dad to two smart gremlins that are definitely outclassing me already.
+
+Please catch up with me on social media! Be aware that I'm awful at responding to DMs!!
+
+- [𝕏][x]
+- [Bluesky][bs]
+- [LinkedIn][li]
+- [GitHub][gh]
+
+## Where to File Issues
+
+I write these courses by hand (only minimal assistance by Claude, the words are all mine) and take care to not make mistakes. However when teaching over ten hours of material, mistakes are inevitable, both here in the grammar and in the course with the material. However I (and the wonderful team at Frontend Masters) are constantly correcting the mistakes so that those of you that come later get the best product possible. If you find a mistake we'd love to fix it. The best way to do this is to [open a pull request or file an issue on the GitHub repo][site]. While I'm always happy to chat and give advice on social media, I can't be tech support for everyone. And if you file it on GitHub, those who come later can Google the same answer you got.
+
+## How the repo works
+
+There are two repos for this class: [the website you're currently on][site] and [the example projects][projects]. To get set up, clone or [download][zip] the projects repo:
+
+```bash
+git clone https://github.com/btholt/fullstack-next-wiki.git
+```
+
+I've written a whole project for you to work with, a wiki editor and viewer, so we'll be working with that for our project throughout the course.
+
+> And one last request! [Please star this repo][site]. It helps the course be more discoverable and with my fragile ego.
+
+[scotty]: https://frontendmasters.com/teachers/scott-moss/?code=holt
+[v3]: https://frontendmasters.com/courses/fullstack-app-next-v3/?code=holt
+[content-repo]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4
+[template]: https://github.com/btholt/next-course-starter/
+[start]: https://tanstack.com/start/latest
+[x]: https://twitter.com/holtbt
+[bs]: https://bsky.app/profile/brianholt.me
+[li]: https://www.linkedin.com/in/btholt/
+[gh]: https://github.com/btholt
+[site]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4
+[projects]: https://github.com/btholt/fullstack-next-wiki
+[issues]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/issues
+[zip]: https://github.com/btholt/fullstack-next-wiki/archive/refs/heads/main.zip
+[path]: https://frontendmasters.com/learn/react/?code=holt
+[react]: https://holt.fyi/react
+[intermediate]: https://holt.fyi/intermediate-react
+[next]: https://frontendmasters.com/courses/next-js-v4/?code=holt
+[web-dev]: https://frontendmasters.com/learn/beginner/
+
+=================
+
+# My Setup
+
+## Node.js
+
+You'll need to have a Node.js version installed, and preferably something after v22.21.
+
+I use [fnm][fnm] to manage my Node.js versions (similar to nvm).
+
+I _think_ this course would work with recent versions of [bun][bun] but it's untested. Beware if you decide go down this path.
+
+## Tools FAQ
+
+### What tools are you using?
+
+- Visual Studio Code – I used to work at Microsoft on VS Code so it's no surprise that I'll be using it in this course. We'll also be using a few extensions that I'll call out as we get there.
+- I also use Cursor fairly frequently as well, particularly when I have large amounts of code to generate.
+- Firefox – I want more than Chromium to exist so I support Firefox where I can. Feel free to use any browser; it won't matter in this course.
+- [Ghostty][ghostty] – I've used so many terminal emulators but I'm a huge fan of Mitchell Hashimoto's work so I'm stoked to support his new software.
+
+### What <font/theme/extension> are you using?
+
+- Visual Studio Code
+  - Dark+ Theme – It comes installed by default but it's not the default theme anymore. I'm so used to it that I can't switch.
+  - [MonoLisa][monolisa] font – I like fonts and I look at it all day so I was okay paying for it. They gave me a code to give you all! `BHOLT10` gives you 10% off (I get no kickback from this, I just like MonoLisa.)
+  - I have [ligatures][ligatures] enabled which is why you might see strange glyphs. If you want ligatures but don't want to pay, the linked ligature article has a few. I like Cascadia Code from Microsoft.
+  - [vscode-icons][vscode-icons] – Lots of neat icons for VS Code and it's free.
+- Terminal
+  - zsh – It comes with macOS now and I'm _way_ too lazy to switch back to bash.
+  - Whatever Ghostty's default theme is. It looks like [Dracula][dracula] to me, but could be something else.
+  - [Starship Prompt][starship] – Very cool prompt that's just pretty. Also shows you what sort of project you're in which is occasionally useful
+  - Whatever font Ghostty ships with. It is definitely one of the nerd fonts which you need for Starship to show symbols like Node.js - if you need a nerd font, I can suggest [Caskaydia Cove Nerd Font][nerd].
+
+## AI Assistant
+
+You can use whatever AI assistant for this course, and I suggest you do. If you don't learn something from the course, it's useful to ask an LLM like ChatGPT or Claude to see if they can help you understand. Generally speaking I default to Claude but honestly it's just because I don't see value in switching often. There are a number that work just as well.
+
+Two pro tips for this class in particular.
+
+- You can find the full text of all these lessons at [https://fullstack-v4.holt.courses/llms.txt][llms]. That way you can load everything I've written into the context of the LLM and ask them about the content of the course with the context of everything.
+- Likewise, Next.js has its entire content of its docs at [https://nextjs.org/docs/llms-full.txt][next]. Because Next.js changes at such a quick pace, it's useful to load some or all of this context into your LLM. Because this one is so big (some 77K lines last I checked) you may not want to load _all_ of this into context, maybe just the sections you need.
+
+[ligatures]: https://worldofzero.com/posts/enable-font-ligatures-vscode/
+[monolisa]: https://www.monolisa.dev/
+[vscode-icons]: https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons
+[dracula]: https://draculatheme.com/
+[starship]: https://starship.rs/
+[nerd]: https://www.nerdfonts.com/font-downloads
+[fnm]: https://github.com/Schniz/fnm
+[bun]: https://bun.sh/
+[llms]: https://fullstack-v4.holt.courses/llms.txt
+[next]: https://nextjs.org/docs/llms-full.txt
+[ghostty]: https://ghostty.org/
+
+=================
+
+# Create Next App
+
+Let's get started.
+
+Go ahead and create a new Next.js app. I normally do this through [create-next-app][cna]. This is a great template for getting started and is ideally situated for our tech stack, namely Vercel.
+
+Run the following:
+
+```bash
+npx create-next-app@latest wikimasters
+```
+
+> I built this course with Next.js 16 - this may well work with future versions but it's always hard to know. Either use 16 like me or just know there may be subtle differences if you use a future version.
+
+Accept all the defaults, but select Biome instead of ESLint when prompted. Biome is a very cool project that is both a linter and a formatter.
+
+This will create a new Next.js app for us and ask us a few questions. Normally you would do `@latest` instead of the version I chose, but for our purposes I want it match as close to my environment as possible so the code continues to work long-term.
+
+Let's make sure all our new code works
+
+```bash
+npm run lint
+npm run format
+npm run dev
+```
+
+I also like to add typecheck to this list
+
+```json
+"typecheck": "tsc --noEmit",
+```
+
+This will lint, format, and then eventually run the server for you. As this isn't an intro to Next course, not much of this should be new.
+
+> Good idea to install the [Biome.js VS Code extension][biome]. Very helpful so you don't need to wait until CI/CD to find out you have issues
+
+There's a good chance there will be some drift in how Create Next App works between when I write this and when you watch it, so feel free to just clone the repo here and start from 00-start to make sure we're totally on the same page.
+
+You may need to add this to your repo, particularly if you're trying to copy my step-way of doing code (I wouldn't suggest it but you can, and I wanted to explain why it's in your code if you're looking at my code.)
+
+```javascript
+// at top
+import { dirname } from "node:path";
+
+// in the config
+turbopack: {
+  root: dirname(__filename),
+},
+```
+
+This helps Turbopack know where its root is, and it can get confused if you have multiple Next.js projects shoved into one repo like I do. Normally Turbopack has no problem figuring this out.
+
+> 🏁 This is the [00-start][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/00-start
+[cna]: https://nextjs.org/docs/app/api-reference/cli/create-next-app
+[biome]: https://marketplace.visualstudio.com/items?itemName=biomejs.biome
+
+=================
+
+# shadcn
+
+We are going to be using [shadcn ui][shadcn] for our design system. Let's dissect that a bit further.
+
+- shadcn UI is based on [Radix][radix] (this is a good blog post on the difference). Radix is a component library that provides unstyled primitives that are well designed for accessibility and usability. shadcn takes these and adds a sane set of default styles to them.
+- Both of these are in turn built on top of [Tailwind][tailwind]. Tailwind is a styling system that breaks every CSS value into its own CSS class, so instead of having stylesheets, you just directly apply the CSS to your React. If you've never used it before it can be abrasive but over time it's won over a critical mass of UI developers. When done well it's a delight to work in.
+
+> Fun fact: [shadcn is a person][x]. He works at Vercel.
+
+Essentially it's a opinionated set of styles and components. It's also a CLI that adds the components as you need them - it doesn't include everything at once which is nice.
+
+Let's go ahead and initialize it.
+
+```bash
+npx shadcn@3.3.1 init
+```
+
+> Normally you should do `shadcn@latest` but we're going to be sticking to 3.3.1 for this course.
+
+This will ask you to choose a tone. I think I went with slate? Feel free to choose your own base tone.
+
+This should add some styles and make some modifications to your project. One thing to note is that this will include some global styles, but in and of itself shadcn is a component system. You need to individually add components. It does install a few dependencies like the icon library, some CSS helpers, and such. Don't worry about those too much - it's all for shadcn.
+
+```bash
+npx shadcn@3.3.1 add @shadcn/navigation-menu
+npx shadcn@3.3.1 add @shadcn/button
+```
+
+Notice inside your app directory there is now a component/ui directory, and it has a navigation-menu.tsx and a button.tsx file in it. This is how shadcn works - it adds the code for the component to your library. This is cool because now it's _your_ component. Rather than trying to rebase and monkey patch a library, you can just directly edit the code. Long term this is more sustainable for using shadcn to craft your own design system instead of just a thin wrapper on top of something like Bootstrap.
+
+Let's go ahead and make a navigation menu using our new component (we're not going to modify any of the shadcn components themselves today but you should feel free to, that's why the code is in your codebase!)
+
+Create `nav-bar.tsx` in your components directory and put:
+
+```typescript
+import * as React from "react";
+import Link from "next/link";
+import {
+  NavigationMenu,
+  NavigationMenuList,
+  NavigationMenuItem,
+} from "@/components/ui/navigation-menu";
+import { Button } from "@/components/ui/button";
+
+export function NavBar() {
+  return (
+    <nav className="w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
+      <div className="container mx-auto flex h-16 items-center justify-between px-4">
+        <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="font-bold text-xl tracking-tight text-gray-900"
+          >
+            Wikimasters
+          </Link>
+        </div>
+        <NavigationMenu>
+          <NavigationMenuList className="flex items-center gap-2">
+            <NavigationMenuItem>
+              <Button asChild variant="outline">
+                <Link href="/signin">Sign In</Link>
+              </Button>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Button asChild>
+                <Link href="/signup">Sign Up</Link>
+              </Button>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+      </div>
+    </nav>
+  );
+}
+```
+
+This is what working in Tailwind feels like (and thus Radix and shadcn, since they all use Tailwind). People think this feels gross, not using CSS and putting it all in the class, but here's the pitch. Everything we make in React is a component, and in theory we should compose all our pages of components that are glued together with bits of CSS. If you're following this pattern, all the components get self-contained CSS in their React components, and the bit of CSS you would write to glue pages together well ends up just being on the page itself via Tailwind classes. If you have something that _should_ share CSS with something else, then it should be a component.
+
+In practice, I find this to be about 95% true - most things can just live in Tailwind classes with components. If you've ever maintained a large project before, you know deleting CSS is the hardest thing to do - it's so hard to tell what's used and what's not. When I worked at LinkedIn in 2015-ish, they had _2 megabytes_ of CSS, most of which was hand written. They had no idea how to fix it, and it's ultimately where the [CSS Blocks][blocks] project came from (which if it didn't inspire Tailwind, it certainly had similar goals.) We've tried so many ways to essentially get to this point - where code and styling are tightly linked in an obvious and non-footgun sort of way: [BEM][bem], [Atomic CSS][atomic], [styled-components][styled], [Emotion][emotion], and [CSS modules][modules]. [Sass][sass], [Less][less], and [Stylus][stylus] deserve mention too!
+
+As you can see, we've been around the bend and many a heated discussion has been had on how best to style a project, and this just one of them (albeit the most popular at the moment.) I'm okay if you choose not to use Tailwind or these things on your projects, but it's what we're going to use today.
+
+Okay, let's go add our nav bar to layout. Go to layout.tsx and add
+
+```typescript
+// at top
+import { NavBar } from "@/components/ui/nav-bar";
+
+// just inside <body>
+<NavBar />;
+```
+
+Run your dev server with `npm run dev` and you should see your nav bar!
+
+Let's do one more and add wiki card components to show the loop again. Go to [shadcn's docs][docs] and look at what's available. I see a Card component, let's use that.
+
+```bash
+npx shadcn@3.3.1 add @shadcn/card
+```
+
+Then create a wiki-card.tsx file in your ui component directory.
+
+```typescript
+import * as React from "react";
+import Link from "next/link";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
+
+interface WikiCardProps {
+  title: string;
+  author: string;
+  date: string;
+  summary: string;
+  href: string;
+}
+
+export function WikiCard({
+  title,
+  author,
+  date,
+  summary,
+  href,
+}: WikiCardProps) {
+  return (
+    <Card>
+      <CardHeader className="pb-2">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
+          <span>{author}</span>
+          <span>•</span>
+          <span>{date}</span>
+        </div>
+        <CardTitle className="text-lg">{title}</CardTitle>
+      </CardHeader>
+      <CardContent className="py-0">
+        <CardDescription>{summary}</CardDescription>
+      </CardContent>
+      <CardFooter className="pt-2">
+        <Link
+          href={href}
+          className="text-blue-600 hover:underline text-sm font-medium w-fit"
+        >
+          Read article &rarr;
+        </Link>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+Nothing too crazy here. Let's go redo our page.tsx to use it. (Feel free to copy/paste here.)
+
+```typescript
+import { NavBar } from "@/components/ui/nav-bar";
+import { WikiCard } from "@/components/ui/wiki-card";
+
+export default function Home() {
+  return (
+    <div>
+      <NavBar />
+      <main className="max-w-2xl mx-auto mt-10 flex flex-col gap-6">
+        <WikiCard
+          title="Complete Intro to React"
+          author="Brian Holt"
+          date="Sep 2025"
+          summary="Learn React from the ground up with Brian Holt. Covers components, hooks, state, effects, and building modern UIs. Perfect for beginners and those wanting a solid foundation."
+          href="https://frontendmasters.com/courses/complete-react-v9/"
+        />
+        <WikiCard
+          title="Rust for TypeScript Developers"
+          author="ThePrimeagen"
+          date="Sep 2025"
+          summary="ThePrimeagen teaches Rust to JavaScript/TypeScript devs. Dive into Rust's memory safety, ownership, and concurrency with fun, practical examples."
+          href="https://frontendmasters.com/courses/rust-typescript/"
+        />
+        <WikiCard
+          title="API Design & Node.js"
+          author="Scott Moss"
+          date="Sep 2025"
+          summary="Scott Moss covers building robust APIs with Node.js. Learn REST, authentication, testing, and best practices for scalable backend services."
+          href="https://frontendmasters.com/courses/api-design-nodejs/"
+        />
+        <WikiCard
+          title="CSS Grid & Flexbox"
+          author="Steve Kinney"
+          date="Sep 2025"
+          summary="Steve Kinney demystifies CSS Grid and Flexbox. Master layout techniques for responsive, modern web apps with hands-on demos and clear explanations."
+          href="https://frontendmasters.com/courses/css-grid-flexbox-v2/"
+        />
+      </main>
+    </div>
+  );
+}
+```
+
+That's it! That's the whole loop for managing shadcn, Tailwind, and Radix.
+
+> 🏁 This is the [01-shadcn][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/01-shadcn
+[shadcn]: https://ui.shadcn.com/
+[radix]: https://workos.com/blog/what-is-the-difference-between-radix-and-shadcn-ui
+[x]: https://x.com/shadcn
+[blocks]: https://css-blocks.com/
+[modules]: https://github.com/css-modules/css-modules
+[bem]: https://getbem.com/
+[styled]: https://styled-components.com/
+[emotion]: https://emotion.sh/docs/introduction
+[atomic]: https://acss-io.github.io/atomizer/
+[sass]: https://sass-lang.com/
+[less]: https://lesscss.org/
+[stylus]: https://stylus-lang.com/
+[docs]: https://ui.shadcn.com/docs/components
+[tailwind]: https://tailwindcss.com/
+
+=================
+
+# Scaling Tailwind
+
+Since this is a fullstack enterprise Next.js course, I wanted to impart some knowledge that I've earned by being involved in maintaining large Tailwind projects. It's generally the same principles as doing CSS, just flavored with having to do it with your React too.
+
+## Take advantage of Tailwind's theming
+
+Tailwind's theme system is built around theme variables - special CSS variables that define your design tokens (colors, fonts, spacing, etc.) and automatically generate corresponding utility classes. Instead of being stuck with predefined utilities, you can customize your design system by defining theme variables using the @theme directive.
+
+For example, adding `--color-mint-500: oklch(0.72 0.11 178)` to your theme automatically creates utilities like `bg-mint-500`, `text-mint-500`, and `border-mint-500` throughout your project. The system is organized into namespaces like `--color-*` for colors, `--font-*` for font families, `--spacing-*` for sizing, and `--breakpoint-*` for responsive variants. You can extend the default theme by adding new variables, override existing ones, or completely replace entire sections. This approach gives you a consistent design system where your custom values work seamlessly with Tailwind's utility-first methodology, and your theme variables are also available as regular CSS variables for use in custom CSS or inline styles.
+
+I'm summarizing what's already very well written [in the Tailwind docs][tw] - please read through it as it's the difference between working in a good Tailwind codebase and a bad one.
+
+In essence, I'm asking you to create and stick to design tokens - have standard colors, paddings, margins, etc. and name them. Otherwise you'll end up with 100s of ways to do the same thing and it's a mess.
+
+## Make variants
+
+Tailwind has the ability to create variants. Buttons are the best example of this - you'll have a CTA button, a normal button, a disabled button, a secondary button, etc. Rather than do something weird in the code or make a new component, just use Tailwind's built-in `@variant` directive to define what minor changes happen to each variant.
+
+## cva is a godsend
+
+[cva][cva], short for class-variance-authority (which I don't think is a reference to the TV show Loki but I can't help but think of it every time) is a library that helps manage variants. Using it, you can make variants that are conditionally applied based on what type of thing it is. Let's look at an example
+
+```javascript
+const button = cva("font-semibold border rounded", {
+  variants: {
+    intent: {
+      primary: "bg-blue-500 text-white",
+      secondary: "bg-gray-200 text-gray-800",
+    },
+    size: {
+      small: "text-sm py-1 px-2",
+      large: "text-lg py-3 px-6",
+    },
+  },
+  defaultVariants: { intent: "primary", size: "small" },
+});
+```
+
+Now we have two different ways to apply a button's style, size and intent, and we can apply different styles based on that. Even better, TypeScript will help enforce that the variants are correct and possible, making it _super_ useful to use. Highly recommend, it helps tame Tailwind in a way that makes a project scale.
+
+## `@apply` is an anti-pattern
+
+If you're unfamiliar with the `@apply` directive, it allows you to author CSS using Tailwind classes. Essentially you can make CSS classes using Tailwind. If find yourself doing this a lot, you're just doing CSS with extra steps, and it leads to the same problems as normal CSS and diminishes a lot of what makes Tailwind great. When you mix the two together, you end up with not having a single source of truth, and at that point you should just pick a system and stick with it.
+
+Am I saying _never_ use @apply? Almost. Like, one step away from that. Treat it like `!important` - there are rare cases where it does make sense to use it, but otherwise you're just creating problems for yourself.
+
+[tw]: https://tailwindcss.com/docs/theme
+
+=================
+
+# Complete UI
+
+This isn't a UI course, so we're going to instantiate the rest of the UI right now and we'll spend the rest of time putting all the backend pieces together and modifying the UI to use them. We just finished the 01-shadcn checkpoint, please start now from the [02-complete-ui][checkpoint] step. This has the same stuff we just built - I just went ahead and "finished" the rest of the site for you. Once you've `npm install`ed and gotten the dev service running, please to the next step.
+
+> 🏁 This is the [02-complete-ui][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/02-complete-ui
+
+=================
+
+# Signin and Signup
+
+> 🚨 The version of Neon Auth taught in this course is deprecated. This version of Neon Auth wrapped another service, Stack Auth. Luckily, you can still sign up directly for Stack Auth, but the database sync'ing that it did no longer works. I've modified the course notes to use Stack Auth. We will have to add several things that the videos don't have, but we've kept it fairly minimal so that the deviations from the videos is as small as possible. 🚨
+> There is a new version of Neon Auth that uses Better Auth, and you can use that if you please, but it works slightly different and uses a different SDK. But otherwise it's pretty similar!
+
+We are going to do now do auth using Neon Auth, which under the hood is the same as Stack Auth - they're just neatly linked if you use Neon and Neon Auth together.
+
+> We're going to skip using Neon Auth here and use Stack Auth
+
+- Head to Neon.com
+- Sign up for an account
+- Create a new project - use the most recent version of Postgres and it doesn't matter what cloud or region you choose
+- Click the "Connect" button and copy the connection strings and paste it into a `.env` file at the root of your project.
+
+> Now go to [stack-auth.com](https://stack-auth.com), sign up, and grab the environment keys.
+
+- Create a new project on Stack Auth (fem-wikimasters)
+- Click `Project Keys` in the sidebar menu
+- Click `Create Project Keys` to generate keys for your project
+- Copy the `Next.js` keys into your `.env` file
+
+Your new .env file should look like
+
+```
+# Stack Auth environment variables for Next.js
+NEXT_PUBLIC_STACK_PROJECT_ID='your project id'
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY='your publishable key'
+STACK_SECRET_SERVER_KEY='your secret key'
+
+# Neon Database owner connection string
+DATABASE_URL='your postgres connection string'
+```
+
+Now that we have that (and as a bonus we're ready to go for our database too because we got the connection string) we can start adding Neon Auth to our project.
+
+Now go to the root of your project and run
+
+```bash
+npx @stackframe/init-stack@latest --no-browser
+```
+
+This should initiate your project and add some auth files to it.
+
+Now you should be able to click sign in or sign up from the top bar and actually sign in or sign up. Stack Auth gives a really nice UI that already fits with shadcn so we don't need to restyle it or anything (though you certainly could!)
+
+That's it for intro'ing our sign in and sign out systems. Modern auth companies make this so easy now - it used to be so hard!
+
+So let's make it that our sign in and sign out buttons show when the user is signed out, and the official UserButton shows from Stack Auth when the user is signed in.
+
+In `src/app/components/nav/nav-bar` put this
+
+```typescript
+// at top
+import { UserButton } from "@stackframe/stack";
+import { stackServerApp } from "@/stack/server";
+
+// inside function
+const user = await stackServerApp.getUser();
+
+// replace inside menu list
+{
+  user ? (
+    <NavigationMenuItem>
+      <UserButton />
+    </NavigationMenuItem>
+  ) : (
+    <>
+      <NavigationMenuItem>
+        <Button asChild variant="outline">
+          <Link href="/handler/sign-in">Sign In</Link>
+        </Button>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <Button asChild>
+          <Link href="/handler/sign-up">Sign Up</Link>
+        </Button>
+      </NavigationMenuItem>
+    </>
+  )
+}
+```
+
+Here we're checking to see if a user exists (which would only exist if they were logged in.) If it exists, show the UserButton from Stack Auth. If not, show our sign in and sign up buttons. Also notice we're not using the useUser hook - this is a stateful, client-side hook. Because this is a React Server Component, we need to use the server getUser function instead.
+
+Try clicking into the account settings from the UserButton - Stack Auth ships a whole user management system so you don't have to!
+
+=================
+
+# Protecting Routes
+
+We need to protect our edit page. Right now any anonymous user can load that page which is not what we want - if you are logged out, we want you to log in first before we let you edit.
+
+> We haven't set up the database yet so we'll only just be differentiating between logged in and logged out. We'll revisit when we add the database to restrict edits to your articles only or allow admins to edit any article.
+
+There are three ways to protect a route with Stack Auth (and I'd say it's pretty generally true for all of Next.js): client-side, server-side, or middleware.
+
+## Client Side
+
+A client-side redirect will look like `useUser({ or: 'redirect' });`. This tells Next.js "hey, if there's no user here, just redirect them to log in". You can also redirect them anywhere, but this is the most common thing you'd do. This works just fine in many cases and is a good user experience as the client can immediately redirect a user without a roundtrip to the server.
+
+What's wrong with client side redirects? The code for these pages is all still sent to the browser, regardless if a user can access it or not. If the page contains sensitive data or shows off hidden endpoints that you may not want to leak or anything that truly is sensitive, you don't want to do this as any attacker could load up your JS and find whatever info you were trying to protect.
+
+In our case it's totally fine - we're not trying to hide the editor from anyone, we just don't don't want to show to anyone who wouldn't be able to use it. We can absolutely use a client side redirect here.
+
+## Server Side
+
+Likewise a server side redirect will look like `await stackServerApp.getUser({ or: 'redirect' });`. This will make sure it all happens on the server and anything inside the component can be guaranteed not to be sent to the user unless they pass the login test. You'll find yourself doing this for React Server Components.
+
+Something similar will likely also be done for API routes should you choose to implement those. In that case you'll do `await stackServerApp.getUser()` and then do a Next.js redirect if the user object doesn't exist.
+
+Again, it's important to note, all of these are plenty secure - no one is going to be able to impersonate someone else, but it's just a matter if you care that the components are being sent down and not used for a user that doesn't pass the authorization.
+
+## Middleware
+
+The code for this will look like
+
+```typescript
+// from the stack auth docs
+export async function middleware(request: NextRequest) {
+  const user = await stackServerApp.getUser();
+  if (!user) {
+    return NextResponse.redirect(new URL("/handler/sign-in", request.url));
+  }
+  return NextResponse.next();
+}
+
+export const config = {
+  // You can add your own route protection logic here
+  // Make sure not to protect the root URL, as it would prevent users from accessing static Next.js files or Stack's /handler path
+  matcher: "/protected/:path*",
+};
+```
+
+This is what you'd do if you wanted to protect a whole block of routes. In the case of the example code above, you'd be gating access to `/protected/<anything>` so you wouldn't have to do it on each page. We won't do this today, but I wanted to let you know you don't have to do it page-by-page, you can do it in blocks too with middleware.
+
+So let's go do it for our app!
+
+In `/src/app/wiki/edit/[id]/page.tsx` put this
+
+```typescript
+// at top
+import { stackServerApp } from "@/stack/server";
+
+// under pulling the id out of params
+await stackServerApp.getUser({ or: "redirect" });
+
+// we'll uncomment this later when the articles have real IDs
+// if (user.id !== id) {
+//   stackServerApp.redirectToHome();
+// }
+```
+
+This lets us either get the user object back from Stack Auth or, if it doesn't exist because they aren't logged in, redirects them to sign in or sign up. We put in the commented code because we can't yet check that because the articles don't have valid IDs, but when they do it will just send the user to the home page. In theory we should probably have a Forbidden page, but for now this is fine.
+
+Okay, let's go do the new/page.tsx too
+
+```typescript
+// at top
+import { stackServerApp } from "@/stack/server";
+
+// replace function, add async
+export default async function NewArticlePage() {
+    await stackServerApp.getUser({ or: "redirect" });
+    ...
+}
+```
+
+The same! And there you go, we've protected our pages with server-side redirects! We did server-side because our pages were already React Server Components and there was no reason to convert them; client-side would have been just fine.
+
+## Server Actions
+
+We have some server actions to accept new and edited articles as well as image uploads. Just because those are server actions does not mean we can leave them unprotected. In reality they're just API endpoints too, even if they're not exposed as restful endpoints. Let's go protect those too (as it works mostly the same way too.)
+
+For **both actions/upload.ts and actions/articles.ts** do the following
+
+```typescript
+// add import to the top
+import { stackServerApp } from "@/stack/server";
+
+// add this to the top of every action function
+const user = stackServerApp.getUser();
+if (!user) {
+  throw new Error("❌ Unauthorized");
+}
+```
+
+This still only checks that the user has logged in - we're still letting any user edit any article, but we'll get there soon. But that is auth! Congrats!
+
+> 🏁 This is the [03-auth][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/03-auth
+
+=================
+
+# Errata: Neon Auth to Stack Auth
+
+## What Changed
+
+Neon Auth (powered by Stack Auth) has been deprecated. The `usersSync` table from drizzle-orm/neon that auto-synced users no longer works.
+
+## Solution 
+
+Sign up for [Stack Auth](https://stack-auth.com/) directly and sync users manually when they create articles.
+
+Follow the steps [in the project repo][errata] to migrate from Neon Auth to Stack Auth.
+
+[errata]: https://github.com/btholt/fullstack-next-wiki/blob/main/ERRATA.md
+
+=================
+
+# Neon and Postgres
+
+> Just to be clear again, I work at Neon (now owned by Databricks). Feel free to use any other Postgres provider or even to run it locally with Docker.
+
+Let's get going with Neon! Neon is a serverless Postgres provider that has some awesome features around it. It's serverless because you don't have to scale it, Neon will. You can set a min and max CPU and even tell it to scale to zero when it's idle to save you money. It has a pretty generous free tier that will more than cover what you'll need for this course. Since we've already signed up for it and copied the environmental variables into our project, we can get going right away. If you need to, head back to the Auth section to see how to set up Neon.
+
+> I'll also mention this is definitely not a Postgres class so we won't spend too much time on the SQL itself. If you want that, [try my SQL class][sql] to get started with SQL.
+
+The basic idea here though is that Postgres is a repository for your data, made to scale to as big as your data needs. You can think of a database like a massive spreadsheet - it has tables, rows, and columns. Those rows, columns, and rules can have data types, functions, validation, and all sorts of other logic on top of them. Postgres is one of the many relational databases that speak SQL and it happens to be the fastest growing by far. After having worked on or with MySQL, SQLite, MongoDB, and others, I'm convinced that unless you have some niche use case you should always use Postgres.
+
+For our app, we want to add the database into a few places: reading to get the articles out of the database, and writing edits and updates to the database. That'll be enough for our use case.
+
+> One cool feature of using Neon Auth is that your user data gets copied into your database, making it very easy to query instead of having to call an API to get it.
+
+We could write raw queries directly (and this case that is more than fine) but I want to show you how I would do it if we were making this into a long-term project or company. I'd use Drizzle.
+
+[sql]: https://holt.fyi/sql
+
+=================
+
+# Setting up Drizzle
+
+We are going to get started writing to our database using Drizzle. Drizzle is a phenomenal ORM, which stands for object-relational mapping. In reality it just means a it's a software package where you define the shape of your data, and it takes care of managing and querying the database for you. Instead of writing raw SQL statements, you write code that then gets translated into SQL for you.
+
+In the past I did not recommend using an ORM (I think you can find this in my previous Frontend Masters courses!) Why not? I had some pretty bad experiences over the year using ORMs in the earlier days of my career (mostly in PHP and Java.) I'd start using an ORM and it would be amazing: it made it easy to get started, to do basic selects and inserts, and the general 95% use case (and I'll say generally speaking, writing this sort of SQL is not hard.) The problem came when you needed to do more advanced querying that the designers of the ORM didn't anticipate. All the sudden what was helping you work faster was a huge impedance on you doing what you want to do. You're suddenly fighting the framework instead of being helped by it. This happened frequently enough that I decided I'd rather just write SQL, and I did that for most of my career (I also like SQL, but it took a lot of practice for me to say that.)
+
+So why now? Why do I like Drizzle instead of choosing to just to continue to do raw SQL?
+
+- Its design is very SQL-ish. A lot of other ORMs try to hide SQL from you and in the process make it hard when you need to do SQL-ish things. that's probably my biggest complaint about other ORMs and I _don't_ have that about Drizzle.
+- TypeScript support, and that's the biggest reason _to_ use Drizzle. When you describe something in Drizzle, all the sudden you have amazing TypeScript support for all your database queries. Otherwise you'd be stuck writing all these types yourself and with Drizzle you just don't have to.
+- They even go one step further and they make little packages for each database provider. For Neon, we have all the Neon Auth tables built into the Drizzle package so you don't need to write those types; they're just built into Drizzle. So cool!
+- The OSS team is also super nice and helpful.
+
+So let's get started! We're going to need a few packages
+
+```bash
+npm i drizzle-orm @neondatabase/serverless dotenv
+npm i -D drizzle-kit drizzle-seed
+```
+
+- The ORM package is package that you'll actually use in your codebase.
+- The drizzle-kit package is all the CLI commands you need to run Drizzle. So creating migrations, running migrations, etc.
+- We could use the normal pg and postgres.js packages, and in many cases you might want to. These use TCP for their connections and support connection pooling that leave connections open which means lower-latency and generally faster connections. However initial connections for these sorts of packages take a while and really aren't a good fit for things like serverless environments where connections will be spinning up and spinning down frequently.
+- We're going to use the Neon serverless driver. This allows us to do SQL over either HTTP or WebSockets (and we're going to do HTTP.) Honestly if we were going to scale up this project, we'd probably want to do the TCP drivers as it might make more sense, but I usually get started with the serverless driver and switch when I see it being helpful. Both work really well.
+- Doing Neon over HTTP is perfectly suited for Vercel's serverless architecture, but it does carry some performance overhead. If you're really performance sensitive or doing transactions is really important to you, we'd need to re-architect this to happen over websockets. But we don't so this works!
+- We're also install drizzle-seed which makes seeding your Drizzle database very easy.
+
+Okay, let's start making our database work. Normally you'd need to go to Neon.com and create your project and get your DATABASE_URL and put that in your .env file, but we did that as part of setting up auth. So let's go ahead and start with our config.
+
+Go create in the root of the project drizzle.config.ts. Put in there
+
+```typescript
+import "dotenv/config";
+import { defineConfig } from "drizzle-kit";
+
+export default defineConfig({
+  out: "./drizzle",
+  schema: "./src/db/schema.ts",
+  dialect: "postgresql",
+  dbCredentials: {
+    url: process.env.DATABASE_URL!,
+  },
+});
+```
+
+This is just some basic config for Drizzle, nothing of note.
+
+Now go create src/db as a folder. Put in there schema.ts
+
+> 🚨 The recorded version of this course didn't have you set up the users table. Since this part of Neon Auth doesn't exist and Stack Auth doesn't have it, we are going to build a simple version of it ourselves. We are just going to handle the account creation part. If you want to later go and add more thorough syncing, it'd be a good exercise.
+
+```typescript
+import { pgTable, serial, text, timestamp, boolean } from "drizzle-orm/pg-core";
+// import { usersSync } from "drizzle-orm/neon"; <- this doesn't work anymore
+
+export const articles = pgTable("articles", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  slug: text("slug").notNull().unique(),
+  content: text("content").notNull(),
+  imageUrl: text("image_url"),
+  published: boolean("published").default(false).notNull(),
+  authorId: text("author_id")
+    .notNull()
+    .references(() => usersSync.id),
+  createdAt: timestamp("created_at", { mode: "string" }).defaultNow().notNull(),
+  updatedAt: timestamp("updated_at", { mode: "string" }).defaultNow().notNull(),
+});
+
+const schema = { articles };
+export default schema;
+
+export type Article = typeof articles.$inferSelect;
+export type NewArticle = typeof articles.$inferInsert;
+
+// add this
+export const usersSync = pgTable("usersSync", {
+  id: text("id").primaryKey(),  // Stack Auth user ID
+  name: text("name"),
+  email: text("email"),
+});
+export type User = typeof usersSync.$inferSelect;
+```
+
+- While this is a lot of new code for you, if you know SQL it should all look _super_ familiar to you. We're basically doing `CREATE TABLE` commands in code. We're describing what data types we want and what constraints we want (like notNull or unique).
+- usersSync from the neon portion of the drizzle-orm package describes the users table from Neon Auth. It's a table that already exists, and we already have all the types and such from Drizzle, made by the Neon and Drizzle team. Pretty cool that it already exists!
+- `references` sets up a foreign key. That means the authorId references the id key in the usersSync table.
+- What's nice is we're not stuck calling "created_at" using snake case in JavaScript. Drizzle makes it easy for us to define our own alias of what we want to call it in code versus what it's called in the database. This was particularly helpful in a codebase I was working in where the actual names of the columns were very long and annoying due to being apart of another system but we could call it whatever we wanted in JS code.
+- `$inferSelect` and `$inferInsert` are probably two of the coolest black magic features in code I've ever used. It takes the database shape that we set up for the articles tables and turns it into a TypeScript type. We write the code once and we get both the TypeScript types and the database ORM to use. Amazing. If you're writing raw SQL, you need to author and maintain those types yourself.
+
+> 🚨 We need to add this helper (which is not in the recorded version) to add sync'ing of our users to our users table
+
+```typescript
+import db from "@/db/index";
+import { usersSync } from "@/db/schema";
+
+type StackUser = {
+  id: string;
+  displayName: string | null;
+  primaryEmail: string | null;
+};
+
+/**
+ * Ensures the Stack Auth user exists in our local users table.
+ * Call this before creating articles to ensure the foreign key reference works.
+ */
+export async function ensureUserExists(stackUser: StackUser): Promise<void> {
+  await db
+    .insert(usersSync)
+    .values({
+      id: stackUser.id,
+      name: stackUser.displayName,
+      email: stackUser.primaryEmail,
+    })
+    .onConflictDoUpdate({
+      target: usersSync.id,
+      set: {
+        name: stackUser.displayName,
+        email: stackUser.primaryEmail,
+      },
+    });
+}
+```
+
+That's it! Now we have a schema that we can use to create our database connection. Go create an index.ts file in the same directory.
+
+```typescript
+import { neon } from "@neondatabase/serverless";
+import { drizzle } from "drizzle-orm/neon-http";
+import * as schema from "@/db/schema";
+import "dotenv/config";
+
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql, { schema });
+
+export default db;
+```
+
+This is just setting up the ORM to be ready to be used by your code. If you were using the pg or postgres packages, you'd set those up here instead. It's really easy to swap in the future - no other code needs to change.
+
+Okay, now let's create our first migration with generate.
+
+```bash
+npx drizzle-kit generate
+```
+
+This actually creates the drizzle directory in the root of your project (check this code in) and spits out some meta data and raw SQL files. Feel free to read these (I like Drizzle because these are usually pretty readable) but never, ever, ever modify these by hands. You are setting yourself up for major issues if you do because Drizzle assumes it does all of these and will not respect any handcrafted code you chuck in here.
+
+> Note that this creates the migrations but does not apply them. Your Neon database will still be empty until you run migrate.
+
+Now let's run it.
+
+```bash
+npx drizzle-kit migrate
+```
+
+This applies what we made with generate. And now you can see the empty tables in Neon. Pretty cool, right!?
+
+> You can also run `npx drizzle-kit push` to just yolo apply whatever schema you have at the moment. This is nice when you're making changes and you just want to apply the new schema and aren't ready to codify what you have as code.
+
+I wrote a little seed script for you to have some database. **Note: you must have at least one user signed up via Neon Auth or this does not work**. Either sign up via your website or add one manually via the Neon console.
+
+[Copy and paste all of this code][seed] into db/seed.ts.
+
+Let's make all of these npm scripts.
+
+```json
+// the end of your scripts in your package.json
+"db:seed": "tsx src/db/seed.ts",
+"db:generate": "drizzle-kit generate",
+"db:migrate": "drizzle-kit migrate"
+```
+
+We'll need tsx for this as well (run TypeScript files as Node, just makes it easy) so run `npm i -D tsx`
+
+So feel free to run `npm run db:seed` now and you should have five articles in your database now to play with.
+
+Awesome. Let's go _use_ these now.
+
+[seed]: https://github.com/btholt/fullstack-next-wiki/tree/main/04-database/src/db/seed.ts
+
+=================
+
+# Query with Drizzle
+
+Let's start by doing the SELECTS first. Our app is already pulling dummy data via a server helper function, so this makes it pretty simple as we only need to update this server helper as opposed to doing it in the code (and makes it super testable!)
+
+Let's open src/lib/data/articles.ts.
+
+```typescript
+// replace everything but the getArticlesById function - we'll do that in a sec
+import db from "@/db/index";
+import { articles } from "@/db/schema";
+import { eq } from "drizzle-orm";
+import { usersSync } from "@/db/schema"; // <- this is different from the video - it's the new path, or it can be combined with the above import
+
+export async function getArticles() {
+  const response = await db
+    .select({
+      title: articles.title,
+      id: articles.id,
+      createdAt: articles.createdAt,
+      content: articles.content,
+      author: usersSync.name,
+    })
+    .from(articles)
+    .leftJoin(usersSync, eq(articles.authorId, usersSync.id));
+  return response;
+}
+```
+
+- We're first importing our db client. This is what will actually connect to the database.
+- We then import the articles schema. Why? This is how you reference which table you want to query. We want the articles table, so we import that schema.
+- In the function, we run a select, choose what columns we want, tell it which table it's coming from, and then join in the author's name (because we want to say the article was written by Bob, not "user-12334")
+- We added the where clause and used `eq` which, as you may imagine, checks for equality. Here we're saying we want to do the join on where the authorId in the article table is the same as the usersSync id so we can get a name instead of an ID.
+- And then we return the array of rows! That's it!
+- This does not paginate. But it's very easy to do with either [cursors][cursors] or just using limit() and offset like normal SQL. Feel free to implement this yourself!
+
+[cursors]: https://orm.drizzle.team/docs/guides/cursor-based-pagination
+
+This should make articles on the home page pull from the database! Hooray! Let's make the articles page pull from it too.
+
+```typescript
+export async function getArticleById(id: number) {
+  const response = await db
+    .select({
+      title: articles.title,
+      id: articles.id,
+      createdAt: articles.createdAt,
+      content: articles.content,
+      author: usersSync.name,
+      imageUrl: articles.imageUrl,
+    })
+    .from(articles)
+    .where(eq(articles.id, id))
+    .leftJoin(usersSync, eq(articles.authorId, usersSync.id));
+  return response[0] ? response[0] : null;
+}
+```
+
+- Here we just added the where filter to filter it down to one record, the correct article ID.
+- Drizzle doesn't have a select one function, but it's indexed so it's not a big deal.
+- You'll notice that the two functions are quite similar, and there might be some DRY part of your brain twitching here, but I'd say calm it and tell it that it's fine that we repeated ourselves. These two functions accomplish different things, and it's possible we could want to optimize them individually the future. There's no need for complex abstractions here, just have some WET (write everything twice/thrice) code here, no big deal.
+- By the end of this project this will be the only data helper, but I like this pattern of having helpers to call database functions instead of just having the raw DB queries in your React UI - makes it a bit more centrally maintained that the UI access patterns and the underlying DB are maintained separately and can be modified either way without disturbing the other too much.
+
+Awesome! That's our SELECTs! Let's go do our writes!
+
+=================
+
+# Writes with Drizzle
+
+Now we've used server helpers to fetch data, let's use form actions to submit data.
+
+> If server actions are new to you, [check out Intermediate React v6][v6] - we cover these with Next.js in depth.
+
+We're going to be editing app/actions/articles.ts. Let's start with creating a new article.
+
+```typescript
+// at top
+import { eq } from "drizzle-orm";
+import db from "@/db/index";
+import { articles } from "@/db/schema";
+
+// replace create article
+export async function createArticle(data: CreateArticleInput) {
+  const user = await stackServerApp.getUser();
+  if (!user) {
+    throw new Error("❌ Unauthorized");
+  }
+  console.log("✨ createArticle called:", data);
+
+  const response = await db.insert(articles).values({
+    title: data.title,
+    content: data.content,
+    slug: "" + Date.now(),
+    published: true,
+    authorId: user.id,
+  });
+
+  return { success: true, message: "Article create logged" };
+}
+```
+
+- Looks fairly similar to our reads, only here we just use `insert` instead of `select`.
+- We're only checking that the user is logged in, not that the correct user can edit the article. We'll implement proper authorization in the next section.
+
+Let's do update and delete.
+
+```typescript
+export async function updateArticle(id: string, data: UpdateArticleInput) {
+  const user = await stackServerApp.getUser();
+  if (!user) {
+    throw new Error("❌ Unauthorized");
+  }
+
+  // TODO: Replace with actual database update
+  console.log("📝 updateArticle called:", { id, ...data });
+
+  const response = await db
+    .update(articles)
+    .set({
+      title: data.title,
+      content: data.content,
+    })
+    .where(eq(articles.id, +id));
+
+  return { success: true, message: `Article ${id} update logged` };
+}
+
+export async function deleteArticle(id: string) {
+  const user = await stackServerApp.getUser();
+  if (!user) {
+    throw new Error("❌ Unauthorized");
+  }
+
+  console.log("🗑️ deleteArticle called:", id);
+
+  const response = await db.delete(articles).where(eq(articles.id, +id));
+
+  return { success: true, message: `Article ${id} delete logged (stub)` };
+}
+```
+
+Nothing groundbreaking here! Same motion, just with `update` and `delete`!
+
+[v6]: https://holt.fyi/intermediate-react
+
+=================
+
+# Authorization
+
+Now that we have both Neon Auth and the database, we can implement authorization (often abbreviated as authZ vs authN which is short for authentication).
+
+Because it confuses a lot of people, let's quickly disambiguate the two. Authentication is logging in, logging out, and signing up. It's you handshaking to the service "this is who I am" via social login, username-and-password, etc. Authentication answers the question **who is it**? Authorization is taking your identity and asking the question **what are you allowed to do?** I can be logged in to Facebook but I can't see everyone's DMs. Why? Because I am not authorized to do so. However you are authorized to see your own DMs. And possibly the admins / moderators of Facebook can see them too, because they may be authorized to see _anyone_'s DMs.
+
+We already did authentication when we implemented Stack Auth. But we haven't done anything with authorization. We just said "if you're logged in you're authorized to do anything". Let's go make it so you can only edit your own posts.
+
+> You'll see authZ and authN everywhere. Generally speaking when people write "Auth" they mean either just authN or both authZ and authN.
+
+Go to the db folder and create a file called authz.ts and put this in there
+
+```typescript
+import { eq } from "drizzle-orm";
+import db from "@/db/index";
+import { articles } from "@/db/schema";
+
+export const authorizeUserToEditArticle = async function authorizeArticle(
+  loggedInUserId: string,
+  articleId: number
+): Promise<boolean> {
+  const response = await db
+    .select({
+      authorId: articles.authorId,
+    })
+    .from(articles)
+    .where(eq(articles.id, articleId));
+
+  if (!response.length) {
+    return false;
+  }
+
+  return response[0].authorId === loggedInUserId;
+};
+```
+
+This takes in an article ID and a user ID and returns if they are able to edit that article or not. Then we can reuse this helper in several places. Later, if we ant to add an editor role that can edit anything, we could just add it here and have it work everywhere. That's the idea.
+
+There's two ways I could have written this. I chose to write the authZ part in TypeScript, `response[0].authorId === loggedInUserId`. We could have written this as SQL, `and(eq(articles.id, articleId), eq(articles.authorId, loggedInUserId))` and let the database done the checking instead of us in TypeScript. Inevitably someone will take exception to the fact this was written this way, so let me explain myself.
+
+- Letting the database do it will be ever-so-slightly more performant, probably, which is why some people were prefer that way. You may need to add an index to accomplish that, but that's not really a big enough deal for that to be a reason to not do it.
+- I like doing it in code because I find the code more readable, and the performance hit is so minimal that I choose to value what I find more readable over what could save a millisecond.
+- Doing it in code would make it easier to refactor later to add other authZ logic here.
+
+Okay, we have authZ logic, now go back to your articles.ts in your actions directory and let's implement it there
+
+```typescript
+// at top
+import { authorizeUserToEditArticle } from "@/db/authz";
+
+// put after authorized check in delete and update function
+if (!(await authorizeUserToEditArticle(user.id, +id))) {
+  throw new Error("❌ Forbidden");
+}
+```
+
+That's it!
+
+What about error handling? There's a couple ways of handling errors with server actions and I find this to be the most straightforward: just throw an error and catch it on the client. This isn't like a normal API with status codes and such - with a server action there's no public reusable API, just really remote code execution. You could also return status codes in the replies if you want to mimic that aspect of API calls, but that point you may almost just be better off making real APIs. The point of server actions to have them feel more like code than remote API invocations.
+
+> 🏁 This is the [04-database][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/04-database
+
+=================
+
+# Errata: Code Checkpoint
+
+## `04-database` Code Checkpoint
+
+If you get stuck after the **Authentication** or **Neon Postgres Database** sections, grab the [04-database solution code](https://github.com/btholt/fullstack-next-wiki/tree/main/04-database) and confirm you've done these steps:
+
+### Created a Neon account
+1. Head to [Neon.com](https://neon.com)
+1. Sign up for an account
+1. Create a new project - use the most recent version of Postgres and it doesn't matter what cloud or region you choose
+1. Copy the connection strings and paste it into a .env file at the root of your project.
+
+### Created a Stack Auth account
+1. Sign up for [Stack Auth](https://stack-auth.com/)
+1. Create a new project
+1. Add these credentials to .env.local:
+  - `NEXT_PUBLIC_STACK_PROJECT_ID`
+  - `NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY`
+  - `STACK_SECRET_SERVER_KEY`
+
+### Seeded the DB and Run the `04-database` Code
+
+```bash
+cd 04-database # using the 04-database code
+npm i # install the dependencies
+npm run db:generate # generate a DB migration (you might be up to date)
+npm run db:migrate # push the migration 
+npm rn db:seed # seed the DB with a Seed User and Articles
+npm run dev #open localhost:3000 and you should have a working application
+```
+
+=================
+
+# Vercel Blob
+
+Next we're going to implement object storage. What is object storage? It's a place where you can upload files (or blobs, as many places call them, as it doesn't matter what the file is, it's just a blob of data.) There are tons of ways to do this, most commonly AWS S3, but we're going to go ahead and stick with Vercel since most of our project is based around Vercel, but you could use Cloudinary, S3, Azure Blob Storage, uploadthing, or any other number of services. Vercel Blob works just great.
+
+What we want to do is allow users to attach an image to an article if they want to. So we're going to do that with Vercel Blob.
+
+Head to Vercel.com and log in or sign up. From there, click on the "Storage" tab. Click "Create Database" (despite this not really being a database) and click "Blob" to create a new Vercel Blob bucket. Choose a region and a name.
+
+> You may have noticed you can get Neon through Vercel as well - this is totally valid if you want to do it this way. Both Vercel and Neon and work hard to make this integration work great, and it's nice to get everything through one bill. I chose to do it this way because I wanted to teach database before I taught Vercel.
+
+From here, go to you Vercel project and click the `.env.local` little tab to be able to copy your API key, and paste that into your .env file.
+
+Next go to the settings page and copy the base URL. In your next.config.js file put this
+
+```javascript
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [new URL("<your_vercel_blob_url>/**")],
+  },
+};
+
+export default nextConfig;
+```
+
+This allows you to use the `next/image` components with no additional config, it just works.
+
+Go ahead and run this in your project to install the SDK
+
+```bash
+npm i @vercel/blob
+```
+
+Awesome. Now let's go write the code.
+
+=================
+
+# Upload Images
+
+Let's start with making the image uploads work. You can do this one of two ways with Vercel Blob (and many other storage solutions): directly from the client to Vercel, or from the client to your server to Vercel. The former skips the middleman and means your server doesn't have to know or care about image uploads which is nice. What happens is your server mints a temporary token that allows access to upload a file to Vercel and the clients send it there.
+
+Since we have all the server actions already set up, it's really easy for us to just do it via the server. What's advantageous about this is we could do any post-processing we wanted on the server too - resize, make thumbnails, etc. in this code which we wouldn't be able to do on the client. Both approaches work, we just went with the simpler one given our setup.
+
+In actions/upload.ts, put this
+
+```typescript
+// at top
+import { put } from "@vercel/blob";
+
+// replace mock code
+try {
+  const blob = await put(file.name, file, {
+    access: "public",
+    addRandomSuffix: true,
+  });
+
+  return {
+    url: (blob as any).url ?? "",
+    size: file.size,
+    type: file.type,
+    filename: blobResult.pathname ?? file.name,
+  };
+} catch (err) {
+  console.error("❌ Vercel Blob upload error:", err);
+  throw new Error("Upload failed");
+}
+```
+
+- Not too bad here. We upload an image to Vercel blob that we got via form data and get back an imageUrl that we save in the database.
+- `access: "public"` is essential as we want anyone to able to see these images.
+- `addRandomSuffix: true` is also important - if I upload `pic.jpg` and then you do with the same file name, it would overwrite it. But with this property set it's guaranteed to not collide.
+- I already did all the validation that it's an image, not over 10MB, it's attached, etc. for you.
+
+Last thing, we need to save these images to the database and then make sure we select them for showing as well.
+
+In actions/articles.ts
+
+```typescript
+// add to createArticle and updateArticle
+imageUrl: data.imageUrl ?? undefined,
+```
+
+`??` is the nullish operation - if the first thing is falsey then it gives you the second thing. In this case if imageUrl is undefined, then it returns undefined. We could leave out the `?? undefined` but I feel like this is more clear.
+
+In lib/data/articles
+
+```typescript
+// add to getArticleById select
+imageUrl: articles.imageUrl,
+```
+
+Now give it shot and see that it works!
+
+> 🏁 This is the [05-object-storage][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/05-object-storage
+
+=================
+
+# Upstash
+
+Now let's look at caching and using a key-value store in your app. I love key-value stores - they're simple tools that yield powerful results. I actually rewrote some of the Redis server as Postgres, just as a fun exercise, [see code here][rtp].
+
+So what is Redis? [I actually teach a fun course on it][redis] if you're interested. It's a key-value store, and that is exactly what it sounds like - you use various keys to access values in a database. An imperfect way to model that in your head is you can think of it as the world's biggest JavaScript object.
+
+```javascript
+// just a way to think about it
+
+const redisStore = {};
+
+redisStore.myKey = 5;
+console.log(redisStore.myKey); // 5
+
+const redis = require("redis");
+
+await redis.set("myKey", 5);
+const val = await redis.get("myKey");
+console.log(val); // 5
+```
+
+Redis can do a bunch of other stuff like increment, scan, etc. but in essence it's all just a store of values that you access with keys.
+
+> You may see [Valkey][valkey] mentioned in places where Redis is talked about. Long story short: Redis tried to make their license more restrictive and the community revolted and started Valkey (**val**ue **key**). It's a fork of Redis before it messed with their license. Now Redis has eased off but Valkey is still going. Using either is fine.
+
+Generally speaking, it's great for caching and anything you want to access frequently at low latency. Redis's throughput is unbelievably fast, orders of magnitude faster than any SQL or NoSQL database, but you trade off features and frequently some of the guarantees like replication and such.
+
+We're going to use Upstash's managed Redis service, but you could use any number of other ones, I just happen to like Upstash. As a bonus, they have some other cool services like an event notification system and a cron job service.
+
+Head to Upstash, sign up, and click the Redis tab. Create a new database, give it a name, and give it a region preferably close to where your database is. The free plan should be plenty for what we want to do.
+
+Copy the tokens to your .env file. You can use TCP or HTTP. I'm using HTTP with the `@upstash/redis` client, but feel free to use `ioredis` or `node-redis` too.
+
+Install the SDK with `npm i @upstash/redis`
+
+And let's go implement it!
+
+[rtp]: https://github.com/btholt/redis-to-postgres
+[redis]: https://btholt.github.io/complete-intro-to-databases/key-value-store
+[valkey]: https://valkey.io/
+
+=================
+
+# Caching
+
+We are going to pretend for a second that our initial page load is reeeeeally slow or expensive (it's neither at the moment) because it's querying the database with a heavy query. If that was true, we'd want to cache our database response for that. Let's go do that.
+
+> Premature optimization kills startups. Generally speaking, don't do cache something until it's proven to be a problem. Whenever you try to guess what the scaling problems are going to be, you're usually wrong, and now you have two problems: an unnecessary hack and an actual scaling problem.
+
+Let's first make a client that we can use anywhere. Make a `cache` directory in app and make an index.ts file and put this in there.
+
+```typescript
+import { Redis } from "@upstash/redis";
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_REST_URL,
+  token: process.env.UPSTASH_REDIS_REST_TOKEN,
+});
+
+export default redis;
+```
+
+From there in lib/data/articles.ts, add this
+
+```typescript
+// at top
+import redis from "@/cache";
+
+// top of getArticles
+const cached = await redis.get("articles:all");
+if (cached) {
+  console.log("🎯 Get Articles Cache Hit!");
+  return cached;
+}
+
+// above return statement
+console.log("🙅‍♂️ Get Articles Cache Miss!");
+redis.set("articles:all", response, {
+  ex: 60, // one minute
+});
+```
+
+Now we cache the results of the getArticles call for one minute, meaning that we should really only see a little load on the database even under heavy traffic - most of those reads can just go straight to Redis and skip your database all together! Pretty cool!
+
+> Could this be better? Definitely. Instead of just relying on the cache to expire and then reset it in code, we could set the cache to expire in 20 minutes, and then have the cache be refreshed every minute via a job. That way we guarantee that the database is going to be being called every minute with fresh data and no "thundering herd" problems. Thundering herd is what they call it when your cache expires and a ton of traffic spikes on your database all at once causing instability. But this will work for now and it's nice-and-simple.
+
+What if someone creates a new article? We want that to show instantly. So let's go clear the cache on article creation.
+
+```typescript
+// at top
+import redis from "@/cache";
+
+// bottom of createArticle, above return statement
+redis.del("articles:all");
+```
+
+That's it! We clear the cache on new article creation so it's always immediately available, but otherwise we assert that the data being a minute old is fresh enough.
+
+=================
+
+# Counting
+
+What if we wanted to track pageviews on each article to show social proof that people are using the wikis? We could do that in Postgres but that's a lot of writes for not very important data. That's actually what Redis excels at, so let's go implement that!
+
+Make a new file at src/apps/actions/pageviews.ts and put this in there
+
+```typescript
+"use server";
+
+import redis from "@/cache";
+
+const keyFor = (id: number | string) => `pageviews:article:${id}`;
+
+export async function incrementPageview(articleId: number) {
+  const articleKey = keyFor(articleId);
+  const newVal = await redis.incr(articleKey);
+  return +newVal;
+}
+```
+
+- incr both increments the existing number _and_ it returns the current value.
+
+Now let's add it to our wiki-article-viewer.ts
+
+```typescript
+// top
+import { incrementPageview } from "@/app/actions/pageviews";
+
+// near top of React component
+useEffect(() => {
+  async function fetchPageview() {
+    const newCount = await incrementPageview(article.id);
+    setLocalPageviews(newCount ?? null);
+  }
+  fetchPageview();
+}, []);
+
+// under the Article badge
+<div className="ml-3 flex items-center text-sm text-muted-foreground">
+  <Eye className="h-4 w-4 mr-1" />
+  <span>{localPageviews ? localPageviews : "—"}</span>
+  <span className="ml-1">views</span>
+</div>;
+```
+
+That's it! Now we should have a very cool page counter, all being powered by Redis.
+
+> 🏁 This is the [06-caching][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/06-caching
+
+=================
+
+# Resend
+
+Let's hop into sending emails. Not the most exciting part of your stack but very important nonetheless. It's your way of being able to reach people when they're not actively using your app.
+
+Email used to be so hard. As someone that had to work with email servers in-house, it is a level of complexity that you just never want to deal with. If you've never had to deal with reputation or deliverability of email, count your lucky stars. AWS SES (simple email service) was the first time I got to use something that allowed me to not worry about all that and it was a revelation. Then Sendgrid came along (now apart of Twilio) and made it that much easier.
+
+Then came Resend - it made sending email as easy invoking a function and not much more. It's so easy and nice to use. Huge recommendation from me, I love the product. I love any product that can turn a negative experience into a positive one.
+
+So let's go set it up. Head to [resend.com][resend] and sign up. When you're done signing up, grab your API key, and put it in your .env as `RESEND_API_KEY`.
+
+Lastly go install
+
+```bash
+npm i resend @react-email/render
+```
+
+> Resend will only let you send emails to yourself until you set up a custom domain. You don't need to do that for our proof of concept, just be aware. I've set mine up so I can demo it for you, but it takes 15 minutes or so to set it up so I don't expect you to do it.
+
+[resend]: https://resend.com
+
+=================
+
+# Send Emails to Users
+
+We're going to send celebration emails every time your
+
+Make a new directory in your src directory called `email`. In there put this index.ts
+
+```typescript
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export default resend;
+```
+
+Now create in the same directory celebration-email.ts
+
+> 🚨 The import from @/db/schema for usersSync is fixed as it no longer comes from the Drizzle package, it comes from our migration we created.
+
+```typescript
+import resend from "@/email";
+import db from "@/db";
+import { articles, usersSync } from "@/db/schema";
+import { eq } from "drizzle-orm";
+
+export default async function sendCelebrationEmail(
+  articleId: number,
+  pageviews: number
+) {
+  const response = await db
+    .select({
+      email: usersSync.email,
+      id: usersSync.id,
+    })
+    .from(articles)
+    .leftJoin(usersSync, eq(articles.authorId, usersSync.id))
+    .where(eq(articles.id, articleId));
+
+  const { email, id } = response[0];
+  if (!email) {
+    console.log(
+      `❌ skipping sending a celebration for getting ${pageviews} on article ${articleId}, could not find email`
+    );
+    return;
+  }
+
+  console.log(email);
+
+  // OPTION 1: this only works if you've set up your own custom domain on Resend like I have
+  const emailRes = await resend.emails.send({
+    from: "Wikimasters <noreply@mail.holt.courses>", // should be your domain
+    to: email,
+    subject: `✨ You article got ${pageviews} views! ✨`,
+    html: "<h1>Congrats!</h1><p>You're an amazing author!</p>",
+  });
+
+  // OPTION 2: If you haven't set up a custom domain (development/testing)
+  // Uncomment this and comment out Option 1:
+  //   const emailRes = await resend.emails.send({
+  //     from: "Wikimasters <onboarding@resend.dev>", // I believe it only lets you send from Resend if you haven't set up your domain
+  //     to: "<the email you signed up with>", // unless you set up your own domain, you can only email yourself
+  //     subject: `✨ You article got ${pageviews} views! ✨`,
+  //     html: "<h1>Congrats!</h1><p>You're an amazing author!</p>",
+  //   });
+
+  if (!emailRes.error) {
+    console.log(
+      `📧 sent ${id} a celebration for getting ${pageviews} on article ${articleId}`
+    );
+  } else {
+    console.log(
+      `❌ error sending ${id} a celebration for getting ${pageviews} on article ${articleId}`,
+      emailRes.error
+    );
+  }
+}
+```
+
+- Take note that you use the correct version - Resend restricts a lot until you set up your domain with Resend
+- Otherwise this is pretty straightforward - more than email ever was!
+- I'm in the habit of not logging emails to the logs for GDPR reasons, hence the ID instead of the email
+- Obviously we'd want a more interesting email for this, but marketing isn't the point of this lesson.
+
+Let's go make this work by adding it to pageviews.ts action.
+
+```typescript
+// at top
+import sendCelebrationEmail from "@/email/celebration-email";
+const milestones = [10, 50, 100, 1000, 10000];
+
+// under newVal declaration
+if (milestones.includes(newVal)) {
+  sendCelebrationEmail(articleId, +newVal); // don't await so we don't block on sending the email, just send it
+}
+```
+
+That's it!
+
+=================
+
+# React Email
+
+Have you ever tried to write markup for emails? It's horrible. It's like living twenty-five+ years in the past. Even basic CSS is asking too much.
+
+Enter React Email - they built a framework around writing normal React and it takes that and outputs markup for email clients that works. It's so much better than things ever used to be. So, so, so much better.
+
+So let's modify our celebration email to use an email template with React Email.
+
+Let's make a templates directory inside of the emails folder. In there, let's put a celebration-template.tsx and put this.
+
+```typescript
+type Props = {
+  name?: string;
+  pageviews: number;
+  articleTitle?: string;
+  articleUrl?: string;
+};
+
+const CelebrationTemplate = ({
+  name,
+  pageviews,
+  articleTitle,
+  articleUrl,
+}: Props) => {
+  return (
+    <html>
+      <body
+        style={{
+          backgroundColor: "#f8fafc",
+          margin: 0,
+          padding: 20,
+          fontFamily:
+            "Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
+          color: "#0f172a",
+        }}
+      >
+        <table
+          width="100%"
+          cellPadding={0}
+          cellSpacing={0}
+          role="presentation"
+          style={{ maxWidth: 600, margin: "0 auto" }}
+        >
+          <tr>
+            <td style={{ paddingBottom: 12 }}>
+              <div style={{ textAlign: "left" }}>
+                <strong style={{ fontSize: 18, color: "#0f172a" }}>
+                  Wikimasters
+                </strong>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <div
+                style={{
+                  background: "#ffffff",
+                  borderRadius: 8,
+                  padding: 24,
+                  boxShadow: "0 1px 0 rgba(15,23,42,0.04)",
+                }}
+              >
+                <h1
+                  style={{
+                    margin: "0 0 8px 0",
+                    fontSize: 20,
+                    lineHeight: "28px",
+                  }}
+                >
+                  🎉 Nice work{name ? `, ${name}` : ""}!
+                </h1>
+
+                <p style={{ margin: "0 0 16px 0", color: "#334155" }}>
+                  Your article{articleTitle ? ` "${articleTitle}"` : ""} just
+                  hit <strong>{pageviews}</strong> views — that's a milestone.
+                </p>
+
+                {articleUrl ? (
+                  <a
+                    href={articleUrl}
+                    style={{
+                      display: "inline-block",
+                      textDecoration: "none",
+                      background: "#0ea5a4",
+                      color: "white",
+                      padding: "10px 14px",
+                      borderRadius: 6,
+                      fontWeight: 600,
+                    }}
+                  >
+                    View article
+                  </a>
+                ) : null}
+
+                <p style={{ marginTop: 18, color: "#94a3b8", fontSize: 13 }}>
+                  Keep writing — you're helping other people learn. — The
+                  Wikimasters team
+                </p>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style={{ paddingTop: 14 }}>
+              <p style={{ margin: 0, color: "#94a3b8", fontSize: 12 }}>
+                You’re receiving this email because you authored content on
+                Wikimasters.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  );
+};
+
+export default CelebrationTemplate;
+```
+
+- Pretty simple React using inline styles
+- You can use the [react-email/tailwind][tw] if you feel like you need to be consistent. I found it to be less helpful than just inlining styles.
+- Otherwise this is just simple React.
+
+Let's go make it work. Rename `celebration-email.ts`'s file extension to `celebration-email.tsx` so it can use React in it. Now modify it.
+
+```typescript
+// at top
+import CelebrationTemplate from "./templates/celebration-template";
+
+const BASE_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
+// grab name and title
+const response = await db.select({
+  email: usersSync.email,
+  id: usersSync.id,
+  title: articles.title,
+  name: usersSync.name,
+});
+
+// grab title and name too
+const { email, id, title, name } = response[0];
+
+const emailRes = await resend.emails.send({
+  from: "Wikimasters <noreply@mail.holt.courses>", // replace with your domain when ready
+  to: email,
+  subject: `✨ Your article got ${pageviews} views! ✨`,
+  react: (
+    <CelebrationTemplate
+      articleTitle={title}
+      articleUrl={`${BASE_URL}/wiki/${articleId}`}
+      name={name ?? "Friend"}
+      pageviews={pageviews}
+    />
+  ),
+});
+```
+
+- Normally I'd be a bit more useful about the BASE_URL, but for here it's fine for the email
+- Otherwise it's just getting the right data to render.
+- These emails look great! And we don't have to write painful email templates.
+- Vercel will populate that URL automatically - otherwise we want it to head to local dev.
+
+Congrats! Adding email to a modern app is so easy. Adding something like Twilio for texting isn't super hard either, it'll feel very similar.
+
+> 🏁 This is the [07-email][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/07-email
+[react-email]: https://react.email/
+[tw]: https://www.npmjs.com/package/@react-email/tailwind
+
+=================
+
+# Vercel AI Gateway
+
+On the home page we want nice, tidy summaries of all of our docs. We could hire an editorial team to do it, make our own authors write their own, or just out the first two sentences of a document. All of these either make a bad summary or incur a lot of work. Let's instead use AI. One thing that current AI does extremely well (perhaps the best) is take long docs and summarize them done to salient points. We're going to do that now.
+
+> As far as I know, there's no totally free way to do AI that doesn't require a credit card. If you need something like that, best I can suggest is set up Ollama with a very small model. I can suggest maybe like gemma3:270m or qwen3:0.6b. [Click here if you need Ollama instructions][ollama]. Just note that this will only work locally and won't deploy when we go later to deploy.
+
+So let's go use Vercel AI Gateway. You could easily here either directly use OpenAI or Anthropic if you have credits with them (and you can still use the AI SDK, we'll see later) or you could use OpenRouter too which what I've used historically. This was my first time with their AI Gateway product and it works great!
+
+Go to your Vercel dashboard, click on the AI Gateway tab. Click on Create API Key and give it a name. Copy this key into your .env file.
+
+```bash
+AI_GATEWAY_API_KEY="<your key>"
+```
+
+Next you probably need to stick a credit card in here to get the $5 free worth of credit. I know that's annoying but these free tiers get abused so much that I understand why (we have similar issue with Neon's free tier.) You could probably go buy a Visa $5 gift card to get started or use something like Privacy.com to set up one that has hard limits on it. Up to you. Or you could use Ollama locally but it wouldn't work deployed.
+
+Head to your project and `npm i ai` to get the Vercel AI SDK. This is probably one of the biggest selling points to me for using Vercel's AI Gateway - the SDK is really nice to use and allows you to easily switch between OpenAI, Anthropic, Google, etc. without having to modify any code.
+
+[ollama]: https://docs.ollama.com/quickstart
+
+=================
+
+# AI Inference
+
+Let's build!
+
+In your src directory, create an ai directory. In there put a summarize.ts file and put this in there
+
+```typescript
+import { generateText } from "ai";
+
+export async function summarizeArticle(
+  title: string,
+  article: string
+): Promise<string> {
+  if (!article || !article.trim()) {
+    throw new Error("Article content is required to generate a summary.");
+  }
+
+  const prompt = `Summarize the following wiki article in 1-2 concise sentences. Focus on the main idea and the most important details a reader should remember. Do not add opinions or unrelated information. The point is that readers can see the summary a glance and decide if they want to read more.\n\nTitle:\n${title}\n\nArticle:\n${article}`;
+
+  const { text } = await generateText({
+    model: "openai/gpt-5-nano",
+    system: "You are an assistant that writes concise factual summaries.",
+    prompt,
+  });
+
+  return (text ?? "").trim();
+}
+
+export default summarizeArticle;
+```
+
+I love the AI SDK. It's a much nicer experience than say the OpenAI SDK's rituals can be, in my opinion.
+
+What's cool about the AI SDK is you can easily switch it to use Anthropic, OpenAI, etc. directly instead of going through Vercel. Smart marketing on their part because it means you can use their SDK no matter what and it's easy to switch to their AI Gateway
+
+Let's say you wanted to use Anthropic directly. Here's what you'd do.
+
+> I'm going to use the Vercel AI Gateway so only do these next steps if you want to switch. I just wanted to show you how easy it is to switch.
+
+```bash
+npm i @ai-sdk/anthropic
+```
+
+```typescript
+// at top
+import { anthropic } from "@ai-sdk/anthropic";
+
+// replace model
+model: anthropic("claude-haiku-4-5"),
+```
+
+That's it! Now instead of going to Vercel's AI Gateway, you're going directly Anthropic. This would be helpful if you already had money on your Anthropic account and didn't want to fill up a Vercel account. We're not doing this, and we're just going to use Vercel's AI Gateway.
+
+> I chose `openai/gpt-5-nano` because it was cheapest of the frontier models as of writing. Summarizing is the most basic AI task and basically any model can do it pretty well. Feel free to experiment here. [Here are the models supported][gateway]. Also, just throwing out that the prompt could be improved. This will do the job but feel free to iterate.
+
+Okay, let's add it to our server actions. Update actions/articles.ts
+
+```typescript
+// at top
+import summarizeArticle from "@/ai/summarize";
+
+// replace db call in create
+const summary = await summarizeArticle(data.title || "", data.content || "");
+const response = await db.insert(articles).values({
+  title: data.title,
+  content: data.content,
+  slug: "" + Date.now(),
+  published: true,
+  authorId: user.id,
+  imageUrl: data.imageUrl ?? undefined,
+  summary, // add
+});
+
+// replace db call in update
+const summary = await summarizeArticle(data.title || "", data.content || "");
+const response = await db
+  .update(articles)
+  .set({
+    title: data.title,
+    content: data.content,
+    imageUrl: data.imageUrl ?? undefined,
+    summary: summary ?? undefined, // add
+  })
+  .where(eq(articles.id, +id));
+```
+
+- We're just using our new module and inserting into the database.
+- The summary _and_ the title should always be there from the frontend. If it wasn't then we'd need to select the necessary fields from the database and then do the summary. You could be more defensive here, but I'm keeping it simple.
+
+Let's go add it to the database. Go to db/schema.ts
+
+```typescript
+// add the row
+summary: text("summary"),
+```
+
+Now run these CLI commands
+
+```typescript
+npm run db:generate
+npm run db:migrate
+```
+
+> You may have a problem with untracked migrations, particularly if you played around with `drizzle-kit push`. There's a bunch of ways to handle this, but I found the easiest way to just drop the articles table and `npm run db:migrate` again and then run `npm run db:seed` again.
+
+Awesome, now, finally, let's add it to the select in data/articles.ts
+
+```typescript
+// replace `getArticles` field
+summary: articles.summary,
+```
+
+Now we can see the summary on the home page for new and edited articles!
+
+[gateway]: https://vercel.com/ai-gateway/models
+
+=================
+
+# Cron
+
+So, now we have a problem - we have some records that have AI summary records, and some that don't. Maybe we make those summary updates low priority, or maybe they fail on some normal interval. What can we do about that? We could make it check on reads but that slows down a critical path. What we could do better is schedule a job to run on some reoccurring basis, essentially a [cron job][cron].
+
+Vercel has a very easy way to do cron jobs for Next.js apps. You just define an API function and Vercel will call the API function for you. Vercel will put in a special variable so you can make sure it's only Vercel that will call the function too (we don't want random people invoking our jobs.)
+
+Let's do it! Let's make a job that runs weekly to make sure that all items in the database have summaries.
+
+> Why weekly? Every time this runs it'll wake your Vercel and Neon instances, costing you money or free tier credit. I chose weekly because adding a few minutes week isn't too bad. If you ran this every minute you'd eat through both Vercel and Neon's free tiers.
+
+In src/app, create a new folder, `api`. In the api directory, make a new directory, `summary`. In there, create a new file, `route.ts`.
+
+In there put:
+
+```typescript
+import { NextRequest, NextResponse } from "next/server";
+import { eq, isNull } from "drizzle-orm";
+import summarizeArticle from "@/ai/summarize";
+import db from "@/db";
+import { articles } from "@/db/schema";
+import redis from "@/cache";
+
+export async function GET(req: NextRequest) {
+  if (
+    process.env.NODE_ENV !== "development" &&
+    req.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`
+  ) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  // Find articles that don't yet have a summary
+  const rows = await db
+    .select({
+      id: articles.id,
+      title: articles.title,
+      content: articles.content,
+    })
+    .from(articles)
+    .where(isNull(articles.summary));
+
+  if (!rows || rows.length === 0) {
+    return NextResponse.json({ ok: true, updated: 0 });
+  }
+
+  let updated = 0;
+  console.log("🤖 Starting AI summary job");
+
+  for (const row of rows) {
+    try {
+      const summary = await summarizeArticle(row.title ?? "", row.content);
+
+      if (summary && summary.trim().length > 0) {
+        await db
+          .update(articles)
+          .set({ summary })
+          .where(eq(articles.id, row.id));
+        updated++;
+      }
+    } catch (err) {
+      // log and continue with next article
+      console.error("Failed to summarize article id=", row.id, err);
+      continue;
+    }
+  }
+
+  if (updated > 0) {
+    // Clear articles cache used by getArticles
+    try {
+      await redis.del("articles:all");
+    } catch (e) {
+      console.warn("⚠️ Failed to clear articles cache", e);
+    }
+  }
+
+  console.log(`🤖 Concluding AI summary job, updated ${updated} rows`);
+
+  return NextResponse.json({ ok: true, updated });
+}
+```
+
+- It now works in dev so we can just hit `localhost:3000/api/summary` in a browser and it'll run
+- In prod it'll check the CRON header and if it doesn't match it won't run.
+- Beyond that, we're just reading from the DB and updating rows that don't have summaries
+- We also clear cache if any of the articles get updated
+
+Make a new file called `vercel.json` and we'll have it run once a week.
+
+```json
+{
+  "crons": [
+    {
+      "path": "/api/summary",
+      "schedule": "0 0 * * 0"
+    }
+  ]
+}
+```
+
+This will run every Sunday at midnight UTC. Feel free to make it whenever you want. If you need help [cron.guru][guru] is very helpful.
+
+And there you go! Now you can have AI summaries running once a week, and in general you now how to do jobs with Vercel and Next.js. This is nice but it applies only to Vercel. Generally speaking I've usually done these sorts of jobs with serverless functions like Azure Functions or AWS Lambdas as those are easy to schedule.
+
+You also learned how to make API endpoints with Next.js. These days I think unless you're making endpoints available to outside users or mobile apps, it's a bit of an anti-pattern to make API endpoints as you should just be using React Server Components do all the connecting between clients and servers.
+
+Lastly we learned how to do migrations with Drizzle. While this is a pretty simple example of it, this is how you do it - just modify your schema files and let Drizzle handle the rest!
+
+> 🏁 This is the [08-ai][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here.
+
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/08-ai
+[cron]: https://btholt.github.io/complete-intro-to-linux-and-the-cli/cron
+[guru]: https://crontab.guru/#0_0_*_*_0
+
+=================
+
+# Deploy to Vercel
+
+We are going to now do all the fun DevOps parts at the end: we are going to deploy, we are going to do CI/CD, and we are going to do observability and analytics.
+
+There are so many ways to skin this cat so we are going to keep it pretty focused - Vercel offers nearly all of these services built-in and it works really well with Neon and Upstash, so we're just going to lean on that. If I was just getting started, this is what I'd do - only reason I'd something like a different observability platform or analytics is if I outgrew the perfectly adequate offering on Vercel.
+
+Go to GitHub, create a new repo, and push your project into that repo. We're going to use this to deploy. Once you've pushed your code to GitHub, go to Vercel.com and create a new project and connect your GitHub so we can add your repo to this project.
+
+I took the liberty here of fixing some stuff up for deployment, namely adding a bunch of tests. This isn't a testing Next.js course and if you want to see my opinions on testing Next.js [check out my Intermediate React course][ir6] - I go into plenty depth there. So instead I just want you to see what to do with the tests once you have them. I've added some test specific code that you can look at if you want (for example it doesn't run the AI summaries in test because it'd waste a lot of tokens)
+
+> 🏁 This is the [09-with-tests][checkpoint] checkpoint. Open that folder in the sample project repo to go to where we are as of right here. This is the final version of the project and what we'll use to deploy.
+
+Another note - these days I mostly vibe code my tests - it's such a perfect use case for it.
+
+In this repo, it'll now expect _two_ sets of variables, if you want to. For the purposes of this course, feel free to just re-use your prod infra for test, but you'll see how to set up preview environments _and_ prod environments.
+
+Neon will automatically branch your database for you after we set up the integration so don't worry about those.
+
+I personally set up a second Upstash, gave a fake Resend key for email, a second blob storage (which you can connect via the Storage tab but you do still need to add the `BLOB_BASE_URL` manually)
+
+For Neon Auth, it won't work as-is. This is somewhat intentional - Neon Auth today just has one environment that doesn't branch, so your preview env would be hitting production, which you may or may not want. I'd say you probably don't want that.
+
+The way to work around this is to have a second Neon project that is just a Neon Auth project and you'd regularly make a copy of your production Neon Auth to the project Neon Auth so it didn't fall out of sync (you'd probably anonymize it too) - this isn't ideal and we're working on a better situation at Neon.
+
+Alternatively you could have your preview environments automatically add their redirect URLs on creation and then have a job to clean them up when they go away. Messy still too.
+
+Or, and hear me out here, you make the devs do it manually for each preview environment that needs it. Annoying, yes, but it also makes the devs handle it and it's not that burdensome to do - it's a couple of clicks in the Neon UI. We're going to skip doing this.
+
+Lastly I just add the AI_GATEWAY_KEY for all envs - it won't get used in test because I turned it off in test.
+
+> 🚨 Be sure to not upload every step (like my repo is) - instead just upload the project you're working on.
+
+We don't need to modify the build or anything because it all should just be default Next.js - Vercel is very much built for Next.js and vice-versa.
+
+Once you've done this, your app should be in prod! If you gave Vercel all the permissions it needed, it should also automatically set up all the Vercel preview deployment stuff with no additional work.
+
+Let's hook up everything we need now
+
+## Neon
+
+Let's make Neon work. Vercel and Neon have taken great care to make sure this works really well together so experience is as easy as
+
+- Go to the project dashboard
+- Go to Settings
+- Go to Integrations
+- Browse Marketplace
+- Search for and Click on Neon. [You can also go straight there from here][neon]
+- Click Install from the top right, click Link Existing Neon Account since that's what we did.
+- Link your existing project
+
+> You can install Neon via Vercel. The only real difference here is that you'll get one bill for Neon through Vercel. Otherwise it's the same product doing the same thing.
+
+That's it! This will handle all secret management and branching for with regards to Vercel.
+
+## Neon Auth
+
+Neon Auth won't work until you set the correct callback URL. You'll take your base Vercel URL which be something like `https://test-wiki-smoky.vercel.app/` and add that to Neon Auth's "Trusted Domains" under the configuration tab.
+
+For Neon Auth, it won't work as-is for the _preview environments_. This is somewhat intentional - Neon Auth today just has one environment that doesn't branch, so your preview env would be hitting production, which you may or may not want. I'd say you probably don't want that.
+
+The way to work around this is to have a second Neon project that is just a Neon Auth project and you'd regularly make a copy of your production Neon Auth to the project Neon Auth so it didn't fall out of sync (you'd probably anonymize it too) - this isn't ideal and we're working on a better situation.
+
+Alternatively you could have your preview environments automatically add their redirect URLs on creation and then have a job to clean them up when they go away. Messy still too.
+
+Or, and hear me out here, you make the devs do it manually for each preview environment that needs it. Annoying, yes, but it also makes the devs handle it and it's not that burdensome to do - it's a couple of clicks in the Neon UI. We're going to skip doing this.
+
+## Upstash
+
+Feel free to link up Upstash here as well, works the same way. I don't really _use_ the integration that much - I think it has some novel behavior in Upstash's dashboard that can monitor different things. Really I just use it to make sure the environment variables stay in sync.
+
+## Resend
+
+Same as above - this will just create a new API key on the fly and you can track Vercel usage individually. Fine to do or not do, as long as you have a Resend key.
+
+## Blob
+
+Likewise here, via the Storage tab, you can create a link to your Vercel Storage account so that the UI links up nicely. Or you can just make sure the right variables are populated.
+
+> For some of these, you may need to delete old keys that you put there first to set up the integrations. Vercel Blob is certainly that way (ask me how I know)
+
+If all of your variables are set, you should be able to see your site working!
+
+[ir6]: https://holt.fyi/intermediate-react
+[checkpoint]: https://github.com/btholt/fullstack-next-wiki/tree/main/09-with-tests
+[neon]: https://vercel.com/marketplace/neon
+
+=================
+
+# Speed Insights, Analytics, and Observability
+
+Let's just go over a few tabs that I want you to look at. I'm not going to cover them too in-depth, just that you should care they're there and if this was a real app, you should really keep an eye on them
+
+## Analytics
+
+Who are your users? This tab aims to answer part of that. If you've ever looked at Google Analytics, this will look familiar - what pages are getting traffic, what the bounce rate you have (people coming to your site and "bouncing" right away, generally a bad thing), referrers (did they get here via Google or something else), what browser they're using, etc.
+
+They also have some cool features around feature flagging and custom events that are for pro users, take a look at those if you're interested.
+
+Generally speaking, this is sufficient for new projects, but you probably will eventually needed more sophisticated tracking. But to get started with, it's great it's all in one place on the same bill.
+
+I put this for you already, but you just need to include a little script to track these events. It's in layout.tsx, and I also put the Speed Insights script for you.
+
+## Speed Insights
+
+Think of this like an automated Google Lighthouse, where it tells you your basic web performance metrics and tracks them over time. Super useful for monitoring how well you're performing and track regressions with new pushes. Highly recommend turning this on for real projects you do - it's proven web performance does make a difference on customer behavior.
+
+## Logs
+
+Just like you have in your terminal when you run it locally, this is those logs. We could definitely do better formatting to be more searchable and useful from a production perspective, but for now this is great.
+
+## Observability
+
+Definitely came an eye on this - this will be how many requests are error'ing out, how much data you're using, and other stuff like that. If you look on the side bar you can track which external APIs you're calling (in our case, we call Upstash a lot) as well images, functions, and other things. They even (with a Pro account) let you set up alerts if stuff starts breaking. This is amazing because it's kind of annoying to set up otherwise.
+
+## Firewall
+
+Fairly new feature, and very cool. There's two things in here I really like: bot protection and attack mode.
+
+Bot protection is if you have a site that you want snooping bots and LLMs to not use. It'll traffic analysis and from what I hear it works pretty well. Think Cloudflare Turnstile. I see this as being really useful for preventing automated sign ups and other things where you're giving things away where people would be incentivize to steal it, like offering a free database that people can use 😅
+
+Attack mode works like Cloudflare's as well. If you're the target of a DDoS attack, turn this on and Vercel will mitigate it for you. It will make your users have to likely do a Captcha or something before they land on your site, but a small price to pay versus just going down all together. Very cool they have it. There's other stuff here but I thought I'd highlight that.
+
+=================
+
+# Continuous Delivery
+
+Let's talk about the CD in CI/CD. How do we get our code from code to deployed? GitHub and Vercel!
+
+There are a trillion ways to do this but in this I'd say let's just lean into Vercel - they're the Next.js people, might as well let them do their thing. We _could_ build our app on GitHub and then take the loose files and deploy those to Vercel, but in this case Vercel is so optimized for Next.js I'm just inclined to let them work their magic.
+
+The cool is it's kinda already set up. Vercel does a really good job making this easy. It can be a huge pain in the ass to get it going on other platforms, and Vercel just makes it work for the average case so well. We really even get preview deployments sorta for free.
+
+What will happen now, by default, is that Vercel will deploy everything in master automatically. There's a lot of other ways to do this, but I generally like the idea "every commit that makes it into master should be able to make it to production." With this idea, this deployment pipeline works great.
+
+By default, GitHub will also not let you deploy unless your tests pass (assuming you've set up Actions, which we will here shortly.)
+
+Let's do something fun. Open a PR for something visual on the site : change a button color, add big text, anything. But do it in a branch, and then open a PR on GitHub for it.
+
+I just made one and it'll look something like this: [make everything red PR][red]. You won't be able to see the PR as you're not on my Vercel team, but you can see Vercel deploys it for me, makes a preview available, that once I've merged we can then promote to production. This will also run the CI (which we'll set up in the next section.)
+
+Another cool thing: you can go in to the preview deploy and leave blocking comments that will block the merging on the PR until the PR author fixes them. Makes it awesome to give to product, marketing or executives who can hold things in new and more difficult ways (I'm mostly kidding.)
+
+> Vercel has "deployment checks" in their UI. If you're following along with me, you don't need them as the GitHub integration picks those up automatically. This would be if you were not using that.
+
+[red]: https://github.com/btholt/fullstack-next-wiki/pull/2
+
+=================
+
+# Continuous Integration
+
+We can deliver our code to production, and we can monitor it once it's there, but how do we ensure code quality and prevent issues before we even have them?
+
+Continuous Integration, the CI portion of CI/CD.
+
+We are going to use GitHub Actions for this (as it's a great platform for most use cases) but there's a trillion providers out there that do this.
+
+I've already put this file in there in your repo, but I'm going to code this up with you as it's a doozy. A lot CI can be pretty simple, but this full stack enterprise, let's throw the kitchen sink at it.
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-format:
+    name: Lint and Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Biome check (lint + format)
+        run: npm run lint
+
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Get Neon branch name
+        id: neon-branch-name
+        run: echo "BRANCH_NAME=unit-${{ github.run_id }}" >> "$GITHUB_ENV"
+
+      - name: Get branch expiration date as an env variable (2 weeks from now)
+        id: get-expiration-date
+        run:
+          echo "EXPIRES_AT=$(date -u --date '+14 days' +'%Y-%m-%dT%H:%M:%SZ')"
+          >> "$GITHUB_ENV"
+
+      - name: Create Neon Branch
+        uses: neondatabase/create-branch-action@v6
+        id: create-neon-branch
+        with:
+          project_id: ${{ secrets.NEON_PROJECT_ID }}
+          branch_name: ${{ env.BRANCH_NAME }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+          expires_at: ${{ env.EXPIRES_AT }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: npm run test
+        env:
+          DATABASE_URL: ${{ steps.create-neon-branch.outputs.db_url }}
+          NODE_ENV: test
+          NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          NEXT_PUBLIC_STACK_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_STACK_PROJECT_ID }}
+          NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY: ${{ secrets.NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY }}
+          STACK_SECRET_SERVER_KEY: ${{ secrets.STACK_SECRET_SERVER_KEY }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_BASE_URL: ${{ secrets.BLOB_BASE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+
+      - name: Delete Neon Branch
+        if: always()
+        uses: neondatabase/delete-branch-action@v3
+        with:
+          project_id: ${{ secrets.NEON_PROJECT_ID }}
+          branch: ${{ env.BRANCH_NAME }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+
+  e2e-tests:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "npm"
+          cache-dependency-path: package-lock.json
+
+      - name: Get Neon branch name
+        id: neon-branch-name
+        run: echo "BRANCH_NAME=e2e-${{ github.run_id }}" >> "$GITHUB_ENV"
+
+      - name: Get branch expiration date as an env variable (2 weeks from now)
+        id: get-expiration-date
+        run:
+          echo "EXPIRES_AT=$(date -u --date '+14 days' +'%Y-%m-%dT%H:%M:%SZ')"
+          >> "$GITHUB_ENV"
+
+      - name: Create Neon Branch
+        uses: neondatabase/create-branch-action@v6
+        id: create-neon-branch
+        with:
+          project_id: ${{ secrets.NEON_PROJECT_ID }}
+          branch_name: ${{ env.BRANCH_NAME }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+          expires_at: ${{ env.EXPIRES_AT }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: npm run test:e2e:ci
+        env:
+          NODE_ENV: test
+          DATABASE_URL: ${{ steps.create-neon-branch.outputs.db_url }}
+          NEON_PROJECT_ID: ${{ secrets.NEON_PROJECT_ID }}
+          NEON_API_KEY: ${{ secrets.NEON_API_KEY }}
+          NEON_BRANCH_NAME: ${{ env.BRANCH_NAME }}
+          TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
+          TEST_USER_PASSWORD: ${{ secrets.TEST_USER_PASSWORD }}
+          NEXT_PUBLIC_STACK_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_STACK_PROJECT_ID }}
+          NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY: ${{ secrets.NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY }}
+          STACK_SECRET_SERVER_KEY: ${{ secrets.STACK_SECRET_SERVER_KEY }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+          BLOB_BASE_URL: ${{ secrets.BLOB_BASE_URL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+
+      - name: Delete Neon Branch
+        if: always()
+        uses: neondatabase/delete-branch-action@v3
+        with:
+          project_id: ${{ secrets.NEON_PROJECT_ID }}
+          branch: ${{ env.BRANCH_NAME }}
+          api_key: ${{ secrets.NEON_API_KEY }}
+```
+
+- This is fairly sophisticated. For reference,[ here's the one that deploys this course website][simple-action] to GitHub pages. Basically build and ship.
+- In this one, we run it whenever new commits land in main and we also run it on PRs automatically.
+- We then split the run into four parts so they can be run on three separate machines and go fast: type check with TypeScript, lint/format with Biome, unit test with Vitest, and E2E test with Playwright.
+- In each one we set up Node.js, we install deps, and we run the testing scripts. For Playwright, we do need to build the server as well so it can actually run and have Playwright test it.
+- We pass in the variables (that we'll set up shortly in GitHub) so that they can be used for testing purposes. These will come from secret variables we set up.
+- We could go through and split hairs about what is a variable and what is a secret, but I'm just making everything a secret.
+
+Let's go to the repo, to settings, to secrets and variables, and add all of our _test_ variables into here. You have to do it one-by-one which is a bit of a pain, but once you've done that, you're ready to run your CI checks! You may find you need to fix some Biome errors. But now we can't merge anything that doesn't pass type checking, linting, formatting, unit tests, and E2E tests. That's a good first step of assurance that bad stuff isn't going out.
+
+Okay, now that you have and it's committed, push it to the repo and you should see it start running on every commit and PR. E2E tests take quite a bit longer to run because they set up Chromium every time.
+
+Hooray! Code quality!
+
+[simple-action]: https://github.com/btholt/build-a-fullstack-nextjs-app-v4/blob/main/.github/workflows/next.yaml
+
+=================
+
+# What More You Can Do
+
+And with that, we have fully finished our full stack wiki app! Congrats!
+
+I always like to leave some suggestions of how to tinker around afterwards so you can extend your understanding - we have a very cool app, what could we do?
+
+# Extending Wikimasters - Project Ideas
+
+Here are some ideas for expanding the Wikimasters project to practice concepts you've learned or branch into adjacent areas:
+
+## New Features & Services
+
+### Search & Discovery
+
+- Add full-text search using Postgres's built-in search or Algolia/Typesense
+- Implement tag/category system for organizing articles
+- Create a "related articles" feature using embeddings and vector search
+
+### Collaboration Features
+
+- Add comments/discussions on articles using something like Commento or build your own
+- Implement article revision history (show diffs between versions)
+- Add collaborative editing with presence indicators (who's viewing/editing) with something like PartyKit
+- Create article templates that users can start from
+
+### Content Enhancement
+
+- Integrate an AI writing assistant (suggest improvements, fix grammar)
+- Implement table of contents auto-generation from markdown headings
+
+### Media & Assets
+
+- Add drag-and-drop image uploads with a nice UI with the ability to have multiple images
+- Create an image gallery/media library for reusing images
+- Implement PDF generation for articles (export to PDF)
+- Add Open Graph image generation for social sharing
+
+### Notifications & Communication
+
+- Add real-time notifications using Pusher or Socket.io
+- Implement @mentions in articles to notify other users
+- Create a daily/weekly digest email of new/updated articles
+- Add Slack/Discord webhook integration for team notifications
+- Add Twilio for text notifications
+
+### Analytics & Insights
+
+- Track article views and reading time
+- Create a dashboard showing popular articles, active authors
+- Add activity feeds (recent edits, new articles, trending content)
+- Implement article analytics (which sections get read most)
+
+### Quality & Workflow
+
+- Add article drafts vs published state workflow
+- Implement peer review/approval process before publishing
+- Create article templates or boilerplates
+- Add spell-check and grammar checking with LanguageTool API
+
+### Performance & Scale
+
+- Implement incremental static regeneration for popular articles
+- Add edge caching with Cloudflare Workers
+- Set up database read replicas on Neon for scaling reads
+- Implement pagination or infinite scroll for article lists
+
+### Developer Experience
+
+- Create webhooks for article events (published, updated)
+- Build a CLI tool for bulk importing markdown files
+- Add export functionality (download all your articles as markdown)
+
+### Fun & Experimental
+
+- Add dark mode toggle (practice theme management)
+- Implement keyboard shortcuts for power users
+- Add voice-to-text for article dictation
+
+## Refactoring & Best Practices
+
+### Code Quality
+
+- Expand test coverage to 80%+ (practice TDD)
+- Add Storybook for component documentation
+- Implement proper error boundaries throughout the app
+- Add loading skeletons for better perceived performance
+
+### Architecture
+
+- Refactor to use a design system (practice component architecture)
+- Implement proper logging with Pino or Winston
+- Add feature flags with one of the vendors on the Vercel Marketplace
+- Set up deployment environments with dev, staging, and prod
+- Set up rolling deployments and canary deployments
+
+### Security
+
+- Add two-factor authentication
+- Implement content security policy (CSP)
+- Add rate limiting to prevent abuse
+- Implement audit logs (who did what when)
+
+## Integration Ideas
+
+### External Services
+
+- Integrate with GitHub to sync markdown files
+- Add Google Drive import/export
+- Connect to Notion API for syncing
+- Implement SSO with Okta or Auth0
+- Set up proper dev auth by making another Neon project and sync'ing anonymized users from prod into dev
+
+### AI/ML
+
+- Auto-generate article summaries with GPT
+- Implement semantic search using embeddings
+- Add content moderation with OpenAI Moderation API
+- Create AI-powered article recommendations
+
+### Monitoring & Ops
+
+- Set up more sophisticated monitoring with Datadog or New Relic
+- Add error tracking with Sentry (beyond basics)
+- Implement uptime monitoring with Pingdom
+- Create status page for service health
+
+=================
+
+# Congrats
+
+You did it!!
+
+This was a fun course to write and teach, I hope you enjoyed it. I hope you walked away not necessarily attached to our Vercel/Neon/Upstash/etc. stack, but informed of what pieces fit where and the confidence to go forward and make your own trade-offs. I hope this reads less like an ad for those services (particularly Neon lol) and more like an exploration of a specific stack. Go back and try to make this with Cloudflare/Railway/OpenRouter/Clerk/etc. and see what you like better and what you like less.
+
+In any case, please keep building and sharing - it's what makes this community fun. And I'll catch you on the next Frontend Masters!
+
+-- Brian
