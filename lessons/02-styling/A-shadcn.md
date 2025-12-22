@@ -178,7 +178,7 @@ export default function Home() {
           author="ThePrimeagen"
           date="Sep 2025"
           summary="ThePrimeagen teaches Rust to JavaScript/TypeScript devs. Dive into Rust's memory safety, ownership, and concurrency with fun, practical examples."
-          href="https://frontendmasters.com/courses/rust-typescript/"
+          href="https://frontendmasters.com/courses/rust-ts-devs/"
         />
         <WikiCard
           title="API Design & Node.js"
