@@ -16,7 +16,7 @@ Tailwind has the ability to create variants. Buttons are the best example of thi
 
 ## cva is a godsend
 
-[cva][cva], short for class-variance-authority (which I don't think is a reference to the TV show Loki but I can't help but think of it every time) is a library that helps manage variants. Using it, you can make variants that are conditionally applied based on what type of thing it is. Let's look at an example
+[cva](https://cva.style), short for class-variance-authority (which I don't think is a reference to the TV show Loki but I can't help but think of it every time) is a library that helps manage variants. Using it, you can make variants that are conditionally applied based on what type of thing it is. Let's look at an example
 
 ```javascript
 const button = cva("font-semibold border rounded", {
